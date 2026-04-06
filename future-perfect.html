@@ -124,7 +124,51 @@
         .next-btn { background: rgba(255, 255, 255, 0.05); color: #00e5ff; text-decoration: none; padding: 14px 28px; border: 1px solid var(--glass-border); border-radius: 12px; font-size: 16px; font-weight: 600; transition: all 0.3s ease; backdrop-filter: blur(10px); }
         .next-btn:hover { background: #00e5ff; color: #000; transform: translateX(5px); box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3); }
 
-        footer { text-align: center; padding: 20px; margin-top: 20px; background: rgba(0, 0, 0, 0.2); font-size: 14px; opacity: 0.8; width: 100%; position: relative; z-index: 10; }
+
+        /* --- FOOTER (ПІДВАЛ САЙТУ) --- */
+        footer {
+            margin-top: 60px;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.3); /* Трохи темніший фон */
+            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Дуже м'яка лінія */
+            text-align: center;
+        }
+
+        .footer-copy {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+            margin-bottom: 20px; /* Відступ вниз до посилань */
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00e5ff;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+        }
+
+        /* Адаптація під світлу тему */
+        [data-theme="light"] footer {
+            background: rgba(0, 0, 0, 0.03); /* Легке затемнення для світлої теми */
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        [data-theme="light"] .footer-links a { color: rgba(0, 0, 0, 0.6); }
+        [data-theme="light"] .footer-links a:hover { color: #008b99; text-shadow: none; }
+        [data-theme="light"] .footer-copy { color: rgba(0, 0, 0, 0.5); }
+        /* footer { text-align: center; padding: 20px; margin-top: 20px; background: rgba(0, 0, 0, 0.2); font-size: 14px; opacity: 0.8; width: 100%; position: relative; z-index: 10; } */
     </style>
 </head>
 <body>
@@ -405,7 +449,16 @@
     </main>
 
     <footer>
-        &copy; 2026 TenseMaster. <span class="translatable" data-key="footerText">All rights reserved.</span>
+        <div class="footer-container">
+            <div class="footer-copy">
+                &copy; 2026 TenseMaster. <span class="translatable" data-key="navRights">All rights reserved.</span>
+            </div>
+            <div class="footer-links">
+                <a href="about.html" class="translatable" data-key="navAbout">About Us</a>
+                <a href="contact.html" class="translatable" data-key="navContact">Contact</a>
+                <a href="privacy.html" class="translatable" data-key="navPrivacy">Privacy Policy</a>
+            </div>
+        </div>
     </footer>
 
     <script src="future-perfect.js"></script>
