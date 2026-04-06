@@ -81,3 +81,11 @@ window.applySavedLanguage = function() {
         }
     });
 };
+
+(function addFavicon() {
+    const link = document.createElement('link');
+    link.rel = 'icon';
+    link.type = 'image/webp';
+    link.href = 'logotip.webp'; // 👈 НАЗВА ТВОЄЇ КАРТИНКИ
+    document.head.appendChild(link);
+})();
