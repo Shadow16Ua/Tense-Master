@@ -82,19 +82,3 @@ window.applySavedLanguage = function() {
     });
 };
 
-// --- АВТОМАТИЧНЕ ДОДАВАННЯ ІКОНКИ (FAVICON) ---
-(function addFavicon() {
-    // 1. Видаляємо стару іконку
-    const oldLink = document.querySelector("link[rel*='icon']");
-    if (oldLink) oldLink.remove();
-
-    // 2. Створюємо нову
-    const link = document.createElement('link');
-    link.rel = 'icon';
-    link.type = 'image/webp'; // 👈 ЗМІНИЛИ ТИП НА WEBP
-    
-    // 3. Додаємо файл (обов'язково впиши свою точну назву, наприклад logo.webp)
-    link.href = 'logotip.webp?v=' + new Date().getTime(); 
-    
-    document.head.appendChild(link);
-})();
