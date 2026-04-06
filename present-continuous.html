@@ -118,6 +118,7 @@
         .usage-grid .usage-item h3 { font-size: 18px; color: #fff; margin-bottom: 5px; }
         .usage-grid .usage-item p { font-size: 15px; opacity: 0.8; margin-bottom: 15px; line-height: 1.5; }
         .usage-grid .usage-item .example-box { margin-top: auto; }
+        @media (max-width: 768px) { .usage-grid { grid-template-columns: 1fr; } .usage-grid .usage-item.full-span { max-width: 100%; text-align: left; } }
         
         @media (max-width: 768px) {
             .usage-grid { grid-template-columns: 1fr; }
