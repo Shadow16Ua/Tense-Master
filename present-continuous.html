@@ -87,7 +87,12 @@
         .now { background: #00e5ff; color: #000; font-size: 14px; padding: 4px 12px; border-radius: 12px; font-weight: bold; position: relative; z-index: 2; margin: 0 10px; }
         .timeline-sub { font-size: 14px; opacity: 0.7; margin-top: 10px; }
 
-        
+         @media (max-width: 768px) {
+            .usage-grid { grid-template-columns: 1fr; }
+            .top-columns { flex-direction: column; gap: 20px; }
+            .usage-grid .usage-item.full-span { max-width: 100%; text-align: left; }
+        }
+
         .rule-card { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; margin-bottom: 30px;}
         .rule-card.full-width { grid-column: 1 / -1; }
         .rule-card h2 { font-size: 24px; border-bottom: 2px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 25px; color: #00e5ff; }
@@ -120,12 +125,7 @@
         .usage-grid .usage-item .example-box { margin-top: auto; }
         @media (max-width: 768px) { .usage-grid { grid-template-columns: 1fr; } .usage-grid .usage-item.full-span { max-width: 100%; text-align: left; } }
         
-        @media (max-width: 768px) {
-            .usage-grid { grid-template-columns: 1fr; }
-            .top-columns { flex-direction: column; gap: 20px; }
-            .usage-grid .usage-item.full-span { max-width: 100%; text-align: left; }
-        }
-
+       
         /* Тест */
         .quiz-section { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px; margin-bottom: 30px; }
         .quiz-section h2 { font-size: 28px; margin-bottom: 10px; text-align: center; color: #00e5ff; }
