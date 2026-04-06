@@ -244,7 +244,7 @@
             color: #00e5ff; 
         }
 
-        /* Мобільна версія */
+        /* Мобільна версія
         @media (max-width: 768px) {
             .usage-grid {
                 grid-template-columns: 1fr;
@@ -253,6 +253,12 @@
                 max-width: 100%;
                 text-align: left;
             }
+        } */
+
+        @media (max-width: 768px) {
+            .usage-grid { grid-template-columns: 1fr; }
+            .top-columns { flex-direction: column; gap: 20px; }
+            .usage-grid .usage-item.full-span { max-width: 100%; text-align: left; }
         }
 
         /* --- FOOTER (ПІДВАЛ САЙТУ) --- */
