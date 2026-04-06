@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | TenseMaster</title>
+    <meta name="description" content="Get in touch with the TenseMaster team. Have questions about English grammar or found a bug? Contact us here.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css"> 
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 4px solid #00e5ff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%; /* Завжди тримає ширину */
+            box-sizing: border-box; /* Щоб внутрішні відступи не роздували блок */
+            max-width: 600px; /* Але не більше ніж 600px на ПК */
+            margin: 50px auto;
+        }
+        .contact-title { font-size: 32px; margin-bottom: 15px; color: #fff; }
+        .contact-desc { color: rgba(255, 255, 255, 0.7); margin-bottom: 30px; line-height: 1.6; }
+        
+        /* СТИЛІ ДЛЯ ФОРМИ */
+        .contact-form {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #00e5ff;
+            background: rgba(0, 229, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #00e5ff 0%, #007bb5 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.5);
+        }
+        .form-status {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none; /* Приховано за замовчуванням */
+        }
+        .status-success { background: rgba(0, 200, 83, 0.1); color: #00c853; border: 1px solid rgba(0, 200, 83, 0.3); }
+        .status-error { background: rgba(244, 67, 54, 0.1); color: #f44336; border: 1px solid rgba(244, 67, 54, 0.3); }
+
+        .social-links a { color: #b388ff; text-decoration: none; font-weight: 600; font-size: 16px; transition: 0.3s; }
+        .social-links a:hover { color: #00e5ff; text-shadow: 0 0 10px rgba(0,229,255,0.4); }
+
+        .back-btn { display: inline-block; color: #00e5ff; text-decoration: none; font-size: 16px; margin-bottom: 30px; transition: transform 0.2s ease; }
+        .back-btn:hover { transform: translateX(-5px); }
+        
+        /* Світла тема */
+        [data-theme="light"] .contact-wrapper { background: #fff; border-color: rgba(0,0,0,0.1); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        [data-theme="light"] .contact-title { color: #222; }
+        [data-theme="light"] .contact-desc, [data-theme="light"] .input-group label { color: rgba(0,0,0,0.6); }
+        [data-theme="light"] .form-control { background: #f9f9f9; border-color: #ddd; color: #333; }
+        [data-theme="light"] .form-control:focus { background: #fff; border-color: #008b99; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Tense<span>Master</span></div>
+
+        <div style="display: flex; align-items: center;">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+
+            <div class="lang-dropdown">
+                <div class="lang-btn" id="currentLang">
+                    <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English ▾
+                </div>
+                <div class="lang-content">
+                    <div onclick="changeLanguage('en', '<img src=\'https://flagcdn.com/w20/gb.png\' class=\'flag-icon\' alt=\'UK flag\'> English')">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English
+                    </div>
+                    <div onclick="changeLanguage('uk', '<img src=\'https://flagcdn.com/w20/ua.png\' class=\'flag-icon\' alt=\'UA flag\'> Українська')">
+                        <img src="https://flagcdn.com/w20/ua.png" class="flag-icon" alt="UA flag"> Українська
+                    </div>
+                    <div onclick="changeLanguage('pl', '<img src=\'https://flagcdn.com/w20/pl.png\' class=\'flag-icon\' alt=\'PL flag\'> Polski')">
+                        <img src="https://flagcdn.com/w20/pl.png" class="flag-icon" alt="PL flag"> Polski
+                    </div>
+                    <div onclick="changeLanguage('ru', '<span style=\'display:inline-block; width:20px;\'></span> Русский')">
+                        <span style="display:inline-block; width:20px;"></span> Русский
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="index.html" class="back-btn translatable" data-key="backBtn">⟵ Back Main page</a>
+        <div class="contact-wrapper">
+            <h1 class="contact-title translatable" data-key="contactTitle">Contact Us 📬</h1>
+            <p class="contact-desc translatable" data-key="contactDesc">
+                Have a question about grammar? Found a bug? Or just want to say hi? We'd love to hear from you!
+            </p>
+
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/mbdpkzlb" method="POST">
+                <div class="input-group">
+                    <label for="name" class="translatable" data-key="formName">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="email" class="translatable" data-key="formEmail">Your Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="message" class="translatable" data-key="formMessage">Message</label>
+                    <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn translatable" data-key="formSubmit">Send Message</button>
+                
+                <div id="formStatus" class="form-status"></div>
+            </form>
+
+            <!-- <div class="social-links" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+                <a href="#">Telegram ➔</a>
+                <a href="#">Instagram ➔</a>
+            </div> -->
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 TenseMaster. <span class="translatable" data-key="footerText">All rights reserved.</span>
+    </footer>
+
+    <script src="past-simple.js"></script>
+    <script src="theme.js"></script>
+    
+    <script>
+        window.translations = {
+            en: {
+                contactTitle: "Contact Us 📬",
+                contactDesc: "Have a question about grammar? Found a bug? We'd love to hear from you!",
+                formName: "Your Name",
+                formEmail: "Your Email",
+                formMessage: "Message",
+                formSubmit: "Send Message",
+                msgSuccess: "✅ Thanks! Your message has been sent successfully.",
+                msgError: "❌ Oops! There was a problem sending your message.",
+                footerText: "All rights reserved.",
+            },
+            uk: {
+                contactTitle: "Зв'яжіться з нами 📬",
+                contactDesc: "Є питання щодо граматики? Знайшли помилку? Ми раді вас чути!",
+                formName: "Ваше ім'я",
+                formEmail: "Ваша пошта",
+                formMessage: "Повідомлення",
+                formSubmit: "Відправити",
+                msgSuccess: "✅ Дякуємо! Ваше повідомлення успішно надіслано.",
+                msgError: "❌ Халепа! Виникла помилка при відправці.",
+                footerText: "Всі права захищені.",
+            },
+            pl: {
+                contactTitle: "Skontaktuj się z nami 📬",
+                contactDesc: "Masz pytanie? Znalazłeś błąd? Napisz do nas!",
+                formName: "Twoje imię",
+                formEmail: "Twój email",
+                formMessage: "Wiadomość",
+                formSubmit: "Wyślij wiadomość",
+                msgSuccess: "✅ Dziękujemy! Twoja wiadomość została wysłana.",
+                msgError: "❌ Ups! Wystąpił problem z wysłaniem wiadomości.",
+                footerText: "Wszelkie prawa zastrzeżone.",
+            },
+            ru: {
+                contactTitle: "Свяжитесь с нами 📬",
+                contactDesc: "Есть вопрос? Нашли ошибку? Мы будем рады!",
+                formName: "Ваше имя",
+                formEmail: "Ваша почта",
+                formMessage: "Сообщение",
+                formSubmit: "Отправить",
+                msgSuccess: "✅ Спасибо! Ваше сообщение успешно отправлено.",
+                msgError: "❌ Ошибка! Возникла проблема при отправке.",
+                footerText: "Все права защищены.",
+            }
+        };
+
+        // Запуск перекладу
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof window.applySavedLanguage === 'function') {
+                window.applySavedLanguage();
+            }
+        });
+
+        // ЛОГІКА ВІДПРАВКИ ФОРМИ (Без перезавантаження сторінки)
+        const contactForm = document.getElementById("contactForm");
+        const formStatus = document.getElementById("formStatus");
+
+        contactForm.addEventListener("submit", async function(event) {
+            event.preventDefault(); // Зупиняємо стандартне перезавантаження
+            
+            const data = new FormData(contactForm);
+            const currentLang = localStorage.getItem('selectedLang') || 'en'; // Дістаємо поточну мову
+            
+            // Змінюємо текст кнопки на час відправки
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = "...";
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(event.target.action, {
+                    method: contactForm.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // Успіх
+                    formStatus.innerHTML = window.translations[currentLang].msgSuccess;
+                    formStatus.className = "form-status status-success";
+                    formStatus.style.display = "block";
+                    contactForm.reset(); // Очищаємо поля
+                } else {
+                    // Помилка від Formspree
+                    formStatus.innerHTML = window.translations[currentLang].msgError;
+                    formStatus.className = "form-status status-error";
+                    formStatus.style.display = "block";
+                }
+            } catch (error) {
+                // Помилка мережі
+                formStatus.innerHTML = window.translations[currentLang].msgError;
+                formStatus.className = "form-status status-error";
+                formStatus.style.display = "block";
+            }
+            
+            // Повертаємо кнопку в норму
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
+        });
+    </script>
+</body>
+</html>
