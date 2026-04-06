@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar Flashcards: Practice Tenses | TenseMaster</title>
+    <meta name="description" content="Master English grammar and tenses with our interactive flashcards. Practice sentence structures, irregular verbs, and rules quickly and effectively.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
+    <style>
+        :root { --primary-color: #ffffff; --glass-bg: rgba(255, 255, 255, 0.1); --glass-border: rgba(255, 255, 255, 0.2); --hover-color: rgba(255, 255, 255, 0.25); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #172b4d, #1a365d, #204066); background-size: cover; background-attachment: fixed; color: var(--primary-color); min-height: 100vh; display: flex; flex-direction: column; }
+
+        header { display: flex; justify-content: space-between; align-items: center; padding: 12px 50px; background: rgba(10, 15, 30, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; line-height: 1; }
+        .logo span { color: #00e5ff; }
+
+        .lang-dropdown { position: relative; display: inline-block; }
+        .lang-btn { background: var(--glass-bg); color: white; border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
+        .lang-btn:hover { background: var(--hover-color); }
+        .lang-content { display: none; position: absolute; right: 0; top: 100%; margin-top: 8px; background: rgba(20, 30, 60, 0.95); backdrop-filter: blur(15px); min-width: 160px; border-radius: 8px; border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 101; }
+        .lang-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
+        .lang-dropdown:hover .lang-content { display: block; animation: fadeIn 0.2s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .lang-content div { color: white; padding: 12px 16px; display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
+        .lang-content div:first-child { border-radius: 8px 8px 0 0; }
+        .lang-content div:last-child { border-radius: 0 0 8px 8px; }
+        .lang-content div:hover { background: rgba(255, 255, 255, 0.1); color: #00e5ff; }
+        .translatable { transition: opacity 0.3s ease-in-out; }
+
+        main { flex: 1; padding: 50px; position: relative; z-index: 10; max-width: 900px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .back-btn { align-self: flex-start; display: inline-block; color: #00e5ff; text-decoration: none; font-size: 16px; margin-bottom: 30px; transition: transform 0.2s ease; }
+        .back-btn:hover { transform: translateX(-5px); }
+
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { font-size: 46px; margin-bottom: 10px; font-weight: 700; color: #00e5ff; }
+        .hero p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* --- 3D FLASHCARD STYLES --- */
+        .flashcard-scene {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            perspective: 1000px; /* Створює 3D-простір */
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d; /* Зберігає 3D для дочірніх елементів */
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg); /* Перевертає картку */
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Ховає задню сторону, коли вона відвернута */
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* Лицьова сторона (Запитання) */
+        .card-front {
+            background: rgba(20, 30, 60, 0.8);
+            backdrop-filter: blur(15px);
+        }
+        .card-front h3 {
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #fff;
+        }
+        .hint-text {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            opacity: 0.5;
+            font-weight: 300;
+        }
+
+        /* Зворотна сторона (Відповідь) */
+        .card-back {
+            background: linear-gradient(135deg, #00e5ff, #007bb5);
+            color: #000;
+            transform: rotateY(180deg); /* Спочатку вона перевернута */
+        }
+        .card-back h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .tense-name {
+            background: rgba(0,0,0,0.15);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        /* Кнопка "Наступна картка" */
+        .next-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid var(--glass-border);
+            padding: 14px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .next-btn:hover {
+            background: #00e5ff;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 229, 255, 0.4);
+            border-color: #00e5ff;
+        }
+
+        footer { text-align: center; padding: 20px; margin-top: auto; background: rgba(0, 0, 0, 0.2); font-size: 14px; opacity: 0.8; width: 100%; position: relative; z-index: 10; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Tense<span>Master</span></div>
+
+        <div style="display: flex; align-items: center;">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+
+            <div class="lang-dropdown">
+                <div class="lang-btn" id="currentLang">
+                    <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English ▾
+                </div>
+                <div class="lang-content">
+                    <div onclick="changeLanguage('en', '<img src=\'https://flagcdn.com/w20/gb.png\' class=\'flag-icon\' alt=\'UK flag\'> English')">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English
+                    </div>
+                    <div onclick="changeLanguage('uk', '<img src=\'https://flagcdn.com/w20/ua.png\' class=\'flag-icon\' alt=\'UA flag\'> Українська')">
+                        <img src="https://flagcdn.com/w20/ua.png" class="flag-icon" alt="UA flag"> Українська
+                    </div>
+                    <div onclick="changeLanguage('pl', '<img src=\'https://flagcdn.com/w20/pl.png\' class=\'flag-icon\' alt=\'PL flag\'> Polski')">
+                        <img src="https://flagcdn.com/w20/pl.png" class="flag-icon" alt="PL flag"> Polski
+                    </div>
+                    <div onclick="changeLanguage('ru', '<span style=\'display:inline-block; width:20px;\'></span> Русский')">
+                        <span style="display:inline-block; width:20px;"></span> Русский
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <a href="index.html" class="back-btn translatable" data-key="backBtn">← Back to Home</a>
+        
+        <div class="hero">
+            <h1 class="translatable" data-key="title">Active Recall</h1>
+            <p class="translatable" data-key="desc">Read the sentence, guess the correct verb form and tense, then click the card to flip and check your answer!</p>
+        </div>
+
+        <div class="flashcard-scene" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="card-face card-front">
+                    <h3 id="cardQuestion">Loading...</h3>
+                    <div class="hint-text translatable" data-key="clickHint">👆 Click to flip</div>
+                </div>
+                <div class="card-face card-back">
+                    <h2 id="cardAnswer">Loading...</h2>
+                    <div class="tense-name" id="cardTense">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <button class="next-btn translatable" data-key="nextBtn" onclick="nextCard()">Next Card ➔</button>
+
+    </main>
+
+    <footer>
+        &copy; 2026 TenseMaster. <span class="translatable" data-key="footerText">All rights reserved.</span>
+    </footer>
+
+    <script src="flashcards.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

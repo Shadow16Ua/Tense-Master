@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final English Grammar Exam: Test Your Skills | TenseMaster</title>
+    <meta name="description" content="Ready for the ultimate challenge? Take our Final English Grammar Exam to test your knowledge of all tenses, modal verbs, passive voice, and conditionals.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
+    <style>
+        :root { --primary-color: #ffffff; --glass-bg: rgba(255, 255, 255, 0.1); --glass-border: rgba(255, 255, 255, 0.2); --hover-color: rgba(255, 255, 255, 0.25); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #172b4d, #1a365d, #204066); background-size: cover; background-attachment: fixed; color: var(--primary-color); min-height: 100vh; display: flex; flex-direction: column; }
+
+        header { display: flex; justify-content: space-between; align-items: center; padding: 12px 50px; background: rgba(10, 15, 30, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; line-height: 1; }
+        .logo span { color: #00e5ff; }
+
+        .lang-dropdown { position: relative; display: inline-block; }
+        .lang-btn { background: var(--glass-bg); color: white; border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
+        .lang-btn:hover { background: var(--hover-color); }
+        .lang-content { display: none; position: absolute; right: 0; top: 100%; margin-top: 8px; background: rgba(20, 30, 60, 0.95); backdrop-filter: blur(15px); min-width: 160px; border-radius: 8px; border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 101; }
+        .lang-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
+        .lang-dropdown:hover .lang-content { display: block; animation: fadeIn 0.2s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .lang-content div { color: white; padding: 12px 16px; display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
+        .lang-content div:first-child { border-radius: 8px 8px 0 0; }
+        .lang-content div:last-child { border-radius: 0 0 8px 8px; }
+        .lang-content div:hover { background: rgba(255, 255, 255, 0.1); color: #00e5ff; }
+        .flag-icon { width: 20px; height: 15px; object-fit: cover; border-radius: 2px; }
+        .translatable { transition: opacity 0.3s ease-in-out; }
+
+        /* Розширив max-width з 900px до 1100px */
+        main { flex: 1; padding: 50px; position: relative; z-index: 10; max-width: 1100px; margin: 0 auto; width: 100%; }
+        .back-btn { display: inline-block; color: #00e5ff; text-decoration: none; font-size: 16px; margin-bottom: 30px; transition: transform 0.2s ease; }
+        .back-btn:hover { transform: translateX(-5px); }
+
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { font-size: 46px; margin-bottom: 15px; font-weight: 700; color: #ffc107; text-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
+        .hero p { font-size: 18px; opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+        .quiz-section { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px; margin-bottom: 30px; }
+        
+        .quiz-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px; }
+        .quiz-item { padding-bottom: 25px; border-bottom: 1px solid var(--glass-border); }
+        .quiz-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+        
+        .quiz-item p { font-size: 18px; margin-bottom: 15px; font-weight: 600; }
+        .options { display: flex; gap: 15px; flex-wrap: wrap; }
+        
+        .custom-radio { cursor: pointer; position: relative; user-select: none; }
+        .custom-radio input[type="radio"] { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+        .radio-box { display: inline-block; padding: 12px 24px; background: rgba(255, 255, 255, 0.05); border: 2px solid var(--glass-border); border-radius: 12px; transition: all 0.3s ease; font-weight: 500; font-size: 16px; color: white; }
+        
+        .quiz-active .custom-radio:hover .radio-box { background: rgba(255, 255, 255, 0.15); transform: translateY(-3px); border-color: rgba(0, 229, 255, 0.5); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .quiz-active .custom-radio input:checked ~ .radio-box { background: rgba(0, 229, 255, 0.15); border-color: #00e5ff; color: #00e5ff; transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+
+        .correct-answer { border-color: #28a745 !important; background: rgba(40, 167, 69, 0.25) !important; color: #28a745 !important; box-shadow: 0 0 15px rgba(40, 167, 69, 0.3) !important; transform: scale(1.05); }
+        .correct-answer::after { content: ' ✔'; font-weight: bold; }
+        .wrong-answer { border-color: #dc3545 !important; background: rgba(220, 53, 69, 0.25) !important; color: #ff4d4d !important; text-decoration: line-through; }
+        .wrong-answer::after { content: ' ✖'; font-weight: bold; text-decoration: none; display: inline-block;}
+
+        .quiz-btn { background: #ffc107; color: #000; border: none; padding: 16px 50px; font-size: 20px; font-weight: bold; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; display: block; margin: 0 auto; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3); margin-bottom: 50px;}
+        .quiz-btn:hover { background: #ffca2c; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255, 193, 7, 0.5); }
+        .quiz-result { text-align: center; margin-top: 25px; font-size: 24px; font-weight: bold; min-height: 30px; transition: all 0.3s ease; margin-bottom: 20px;}
+        .result-success { color: #28a745; text-shadow: 0 0 10px rgba(40, 167, 69, 0.5); }
+        .result-error { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 77, 0.5); }
+
+        footer { text-align: center; padding: 20px; margin-top: 20px; background: rgba(0, 0, 0, 0.2); font-size: 14px; opacity: 0.8; width: 100%; position: relative; z-index: 10; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Tense<span>Master</span></div>
+
+        <div style="display: flex; align-items: center;">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+
+            <div class="lang-dropdown">
+                <div class="lang-btn" id="currentLang">
+                    <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English ▾
+                </div>
+                <div class="lang-content">
+                    <div onclick="changeLanguage('en', '<img src=\'https://flagcdn.com/w20/gb.png\' class=\'flag-icon\' alt=\'UK flag\'> English')">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English
+                    </div>
+                    <div onclick="changeLanguage('uk', '<img src=\'https://flagcdn.com/w20/ua.png\' class=\'flag-icon\' alt=\'UA flag\'> Українська')">
+                        <img src="https://flagcdn.com/w20/ua.png" class="flag-icon" alt="UA flag"> Українська
+                    </div>
+                    <div onclick="changeLanguage('pl', '<img src=\'https://flagcdn.com/w20/pl.png\' class=\'flag-icon\' alt=\'PL flag\'> Polski')">
+                        <img src="https://flagcdn.com/w20/pl.png" class="flag-icon" alt="PL flag"> Polski
+                    </div>
+                    <div onclick="changeLanguage('ru', '<span style=\'display:inline-block; width:20px;\'></span> Русский')">
+                        <span style="display:inline-block; width:20px;"></span> Русский
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-btn translatable" data-key="backBtn">⟵ Back to Home</a>
+        
+        <div class="hero">
+            <h1 class="translatable" data-key="examTitle">The Final Exam</h1>
+            <p class="translatable" data-key="examDesc">24 questions. All 12 tenses. Mixed order. Green means correct, red means incorrect. Good luck!</p>
+        </div>
+
+        <div class="quiz-section quiz-active" id="quizContainer">
+            <div class="quiz-grid">
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q1Text">1. I ___ (see) him at the mall yesterday.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q1" value="have seen"><span class="radio-box">have seen</span></label>
+                        <label class="custom-radio"><input type="radio" name="q1" value="saw"><span class="radio-box">saw</span></label>
+                        <label class="custom-radio"><input type="radio" name="q1" value="was seeing"><span class="radio-box">was seeing</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q2Text">2. She ___ (already / finish) her homework.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q2" value="already finished"><span class="radio-box">already finished</span></label>
+                        <label class="custom-radio"><input type="radio" name="q2" value="has already finished"><span class="radio-box">has already finished</span></label>
+                        <label class="custom-radio"><input type="radio" name="q2" value="is already finishing"><span class="radio-box">is already finishing</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q3Text">3. At 8 PM tomorrow, we ___ (have) dinner.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q3" value="will have"><span class="radio-box">will have</span></label>
+                        <label class="custom-radio"><input type="radio" name="q3" value="will be having"><span class="radio-box">will be having</span></label>
+                        <label class="custom-radio"><input type="radio" name="q3" value="are having"><span class="radio-box">are having</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q4Text">4. Why ___ (you / cry)? What happened?</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q4" value="do you cry"><span class="radio-box">do you cry</span></label>
+                        <label class="custom-radio"><input type="radio" name="q4" value="have you cried"><span class="radio-box">have you cried</span></label>
+                        <label class="custom-radio"><input type="radio" name="q4" value="are you crying"><span class="radio-box">are you crying</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q5Text">5. By the time I arrived, the train ___ (leave).</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q5" value="left"><span class="radio-box">left</span></label>
+                        <label class="custom-radio"><input type="radio" name="q5" value="was leaving"><span class="radio-box">was leaving</span></label>
+                        <label class="custom-radio"><input type="radio" name="q5" value="had left"><span class="radio-box">had left</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q6Text">6. I think it ___ (rain) tomorrow.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q6" value="will rain"><span class="radio-box">will rain</span></label>
+                        <label class="custom-radio"><input type="radio" name="q6" value="is raining"><span class="radio-box">is raining</span></label>
+                        <label class="custom-radio"><input type="radio" name="q6" value="rains"><span class="radio-box">rains</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q7Text">7. He usually ___ (wake up) at 7 AM.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q7" value="is waking up"><span class="radio-box">is waking up</span></label>
+                        <label class="custom-radio"><input type="radio" name="q7" value="wakes up"><span class="radio-box">wakes up</span></label>
+                        <label class="custom-radio"><input type="radio" name="q7" value="has woken up"><span class="radio-box">has woken up</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q8Text">8. While I ___ (cook), the phone rang.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q8" value="cooked"><span class="radio-box">cooked</span></label>
+                        <label class="custom-radio"><input type="radio" name="q8" value="was cooking"><span class="radio-box">was cooking</span></label>
+                        <label class="custom-radio"><input type="radio" name="q8" value="had cooked"><span class="radio-box">had cooked</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q9Text">9. By next year, I ___ (save) enough money.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q9" value="will have saved"><span class="radio-box">will have saved</span></label>
+                        <label class="custom-radio"><input type="radio" name="q9" value="will save"><span class="radio-box">will save</span></label>
+                        <label class="custom-radio"><input type="radio" name="q9" value="will be saving"><span class="radio-box">will be saving</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q10Text">10. I ___ (wait) for you for two hours!</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q10" value="am waiting"><span class="radio-box">am waiting</span></label>
+                        <label class="custom-radio"><input type="radio" name="q10" value="have waited"><span class="radio-box">have waited</span></label>
+                        <label class="custom-radio"><input type="radio" name="q10" value="have been waiting"><span class="radio-box">have been waiting</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q11Text">11. He was tired because he ___ (work) all day.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q11" value="was working"><span class="radio-box">was working</span></label>
+                        <label class="custom-radio"><input type="radio" name="q11" value="worked"><span class="radio-box">worked</span></label>
+                        <label class="custom-radio"><input type="radio" name="q11" value="had been working"><span class="radio-box">had been working</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q12Text">12. By December, she ___ (live) here for 3 years.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q12" value="will have been living"><span class="radio-box">will have been living</span></label>
+                        <label class="custom-radio"><input type="radio" name="q12" value="will be living"><span class="radio-box">will be living</span></label>
+                        <label class="custom-radio"><input type="radio" name="q12" value="has lived"><span class="radio-box">has lived</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q13Text">13. Water ___ (freeze) at 0 degrees Celsius.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q13" value="is freezing"><span class="radio-box">is freezing</span></label>
+                        <label class="custom-radio"><input type="radio" name="q13" value="freezes"><span class="radio-box">freezes</span></label>
+                        <label class="custom-radio"><input type="radio" name="q13" value="has frozen"><span class="radio-box">has frozen</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q14Text">14. We ___ (not / go) to the beach last weekend.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q14" value="weren't going"><span class="radio-box">weren't going</span></label>
+                        <label class="custom-radio"><input type="radio" name="q14" value="haven't gone"><span class="radio-box">haven't gone</span></label>
+                        <label class="custom-radio"><input type="radio" name="q14" value="didn't go"><span class="radio-box">didn't go</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q15Text">15. Don't call me at 9 PM, I ___ (watch) a movie.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q15" value="will watch"><span class="radio-box">will watch</span></label>
+                        <label class="custom-radio"><input type="radio" name="q15" value="will be watching"><span class="radio-box">will be watching</span></label>
+                        <label class="custom-radio"><input type="radio" name="q15" value="watch"><span class="radio-box">watch</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q16Text">16. Look! The bus ___ (come).</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q16" value="comes"><span class="radio-box">comes</span></label>
+                        <label class="custom-radio"><input type="radio" name="q16" value="is coming"><span class="radio-box">is coming</span></label>
+                        <label class="custom-radio"><input type="radio" name="q16" value="has come"><span class="radio-box">has come</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q17Text">17. I couldn't pay because I ___ (lose) my wallet.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q17" value="lost"><span class="radio-box">lost</span></label>
+                        <label class="custom-radio"><input type="radio" name="q17" value="was losing"><span class="radio-box">was losing</span></label>
+                        <label class="custom-radio"><input type="radio" name="q17" value="had lost"><span class="radio-box">had lost</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q18Text">18. I promise I ___ (not / tell) anyone.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q18" value="don't tell"><span class="radio-box">don't tell</span></label>
+                        <label class="custom-radio"><input type="radio" name="q18" value="won't tell"><span class="radio-box">won't tell</span></label>
+                        <label class="custom-radio"><input type="radio" name="q18" value="won't be telling"><span class="radio-box">won't be telling</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q19Text">19. ___ (you / ever / be) to Japan?</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q19" value="Did you ever go"><span class="radio-box">Did you ever go</span></label>
+                        <label class="custom-radio"><input type="radio" name="q19" value="Were you ever"><span class="radio-box">Were you ever</span></label>
+                        <label class="custom-radio"><input type="radio" name="q19" value="Have you ever been"><span class="radio-box">Have you ever been</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q20Text">20. They ___ (play) tennis when it started to rain.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q20" value="were playing"><span class="radio-box">were playing</span></label>
+                        <label class="custom-radio"><input type="radio" name="q20" value="played"><span class="radio-box">played</span></label>
+                        <label class="custom-radio"><input type="radio" name="q20" value="had played"><span class="radio-box">had played</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q21Text">21. By 5 PM, the mechanic ___ (fix) the car.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q21" value="will have fixed"><span class="radio-box">will have fixed</span></label>
+                        <label class="custom-radio"><input type="radio" name="q21" value="will fix"><span class="radio-box">will fix</span></label>
+                        <label class="custom-radio"><input type="radio" name="q21" value="is fixing"><span class="radio-box">is fixing</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q22Text">22. How long ___ (you / learn) English?</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q22" value="do you learn"><span class="radio-box">do you learn</span></label>
+                        <label class="custom-radio"><input type="radio" name="q22" value="have you been learning"><span class="radio-box">have you been learning</span></label>
+                        <label class="custom-radio"><input type="radio" name="q22" value="are you learning"><span class="radio-box">are you learning</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q23Text">23. The ground was wet because it ___ (snow) all night.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q23" value="was snowing"><span class="radio-box">was snowing</span></label>
+                        <label class="custom-radio"><input type="radio" name="q23" value="snowed"><span class="radio-box">snowed</span></label>
+                        <label class="custom-radio"><input type="radio" name="q23" value="had been snowing"><span class="radio-box">had been snowing</span></label>
+                    </div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="translatable" data-key="q24Text">24. By the time we arrive, they ___ (play) for an hour.</p>
+                    <div class="options">
+                        <label class="custom-radio"><input type="radio" name="q24" value="will have been playing"><span class="radio-box">will have been playing</span></label>
+                        <label class="custom-radio"><input type="radio" name="q24" value="will be playing"><span class="radio-box">will be playing</span></label>
+                        <label class="custom-radio"><input type="radio" name="q24" value="are playing"><span class="radio-box">are playing</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="quiz-btn translatable" data-key="checkBtn" onclick="checkExamAnswers()">Submit Exam</button>
+            <div id="quizResult" class="quiz-result" data-key="incompleteTest"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 TenseMaster. <span class="translatable" data-key="footerText">All rights reserved.</span>
+    </footer>
+
+    <script src="final-exam.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

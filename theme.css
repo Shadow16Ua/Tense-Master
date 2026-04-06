@@ -1,0 +1,355 @@
+/* =========================================
+   0. БАЗОВА ТЕМНА ТЕМА (Відновлення кольорів)
+   ========================================= */
+/* Примусово задаємо темний фон для всього сайту */
+html, body {
+    background: linear-gradient(135deg, #172b4d, #1a365d, #204066) !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    min-height: 100vh !important;
+    color: #ffffff !important;
+}
+
+/* Повертаємо білий текст для темної теми */
+h1, h2, h3, p, .logo, .tense-item strong {
+    color: #ffffff !important;
+}
+
+/* Повертаємо неоновий блакитний для кнопки "Назад" */
+.back-btn {
+    color: #00e5ff !important;
+}
+
+.tense-item span, .local-storage-notice, .timeline-sub {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* =========================================
+   1. ДИЗАЙН КНОПКИ-СОНЕЧКА (Працює завжди)
+   ========================================= */
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+    color: #ffffff;
+    margin-right: 15px;
+    z-index: 9999;
+}
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* =========================================
+   2. СВІТЛА ТЕМА (ТІЛЬКИ коли data-theme="light")
+   ========================================= */
+/* Жорстко перекриваємо фон екрану */
+[data-theme="light"],
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec, #bcccdc) !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    color: #102a43 !important;
+}
+
+[data-theme="light"] header {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Кнопка в світлій темі */
+[data-theme="light"] .theme-toggle {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #102a43;
+}
+
+/* Фони карток і блоків */
+[data-theme="light"] .rule-card, 
+[data-theme="light"] .timeline-container, 
+[data-theme="light"] .quiz-section, 
+[data-theme="light"] .exam-banner, 
+[data-theme="light"] .flashcard-promo, 
+[data-theme="light"] .lang-content,
+[data-theme="light"] .time-group {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Тексти у світлій темі (ПРИМУСОВО ТЕМНІ) */
+[data-theme="light"] h1, 
+[data-theme="light"] h2, 
+[data-theme="light"] h3, 
+[data-theme="light"] p, 
+[data-theme="light"] .back-btn, 
+[data-theme="light"] .tense-item strong, 
+[data-theme="light"] .hero p,
+[data-theme="light"] .logo {
+    color: #102a43 !important;
+}
+
+/* Напівпрозорі тексти у світлій темі */
+[data-theme="light"] .tense-item span, 
+[data-theme="light"] .timeline-sub, 
+[data-theme="light"] .local-storage-notice {
+    color: rgba(16, 42, 67, 0.7) !important;
+}
+
+/* ТЕСТИ (КВІЗ) у світлій темі */
+[data-theme="light"] .radio-box {
+    color: #102a43 !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+}
+[data-theme="light"] .custom-radio:hover .radio-box {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+[data-theme="light"] .quiz-btn {
+    color: #102a43 !important;
+    border: 1px solid #102a43 !important;
+}
+[data-theme="light"] .quiz-btn:hover {
+    background: #102a43 !important;
+    color: #ffffff !important;
+}
+
+
+
+/* --- RELATED TOPICS CONTAINER --- */
+.related-topics-container {
+    margin-top: 40px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.05) 0%, rgba(20, 30, 60, 0.2) 100%);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    border-left: 5px solid #00e5ff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.related-topics-title {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.related-links-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Кожне окреме посилання всередині */
+.related-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #00e5ff;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.related-link:hover {
+    background: rgba(0, 229, 255, 0.1);
+    border-color: rgba(0, 229, 255, 0.3);
+    transform: translateX(5px);
+    box-shadow: 0 4px 10px rgba(0, 229, 255, 0.1);
+}
+
+.related-link .arrow {
+    transition: transform 0.3s ease;
+}
+
+.related-link:hover .arrow {
+    transform: translateX(6px); /* Стрілочка їде вправо */
+}
+
+/* Адаптація під світлу тему */
+[data-theme="light"] .related-topics-container {
+    background: linear-gradient(135deg, rgba(0, 139, 153, 0.05) 0%, rgba(255, 255, 255, 0.8) 100%);
+    border-color: rgba(0, 139, 153, 0.2);
+}
+[data-theme="light"] .related-topics-title { color: rgba(0, 0, 0, 0.5); }
+[data-theme="light"] .related-link {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 0, 0, 0.05);
+    color: #008b99;
+}
+[data-theme="light"] .related-link:hover {
+    background: rgba(0, 139, 153, 0.1);
+    border-color: rgba(0, 139, 153, 0.2);
+}
+
+/* --- MOBILE ADAPTATION --- */
+@media (max-width: 768px) {
+    /* 1. Зменшуємо відступи по боках, щоб було більше місця для тексту */
+    main {
+        padding: 15px;
+    }
+
+    /* 2. Робимо заголовки трохи меншими, щоб не розривали рядки */
+    h1 { font-size: 28px !important; }
+    h2 { font-size: 24px !important; }
+
+    /* 3. Якщо у тебе була сітка (grid-2), робимо її в одну колонку */
+    .grid-2 {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* 4. Робимо картки граматики компактнішими */
+    .grammar-card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* 5. Навігація (меню в граматиці) */
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* 6. Посилання "Related Topics" — робимо текст меншим для вузьких екранів */
+    .related-link {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+}
+
+/* --- УНІВЕРСАЛЬНИЙ КОНТЕЙНЕР ДЛЯ ТЕКСТУ-ПРИКЛАДУ --- */
+.context-reading-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px 0;
+    line-height: 1.9;
+    position: relative;
+    overflow: hidden;
+}
+
+.context-reading-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.context-text {
+    font-size: 17px;
+    color: #e0e0e0;
+    text-align: justify;
+}
+
+/* Кольорові схеми для різних часів */
+
+/* Present Simple (Cyan) */
+.context-ps { border-left: 5px solid #00e5ff; }
+.context-ps b { color: #32c27a; font-weight: 700; text-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
+
+/* Present Continuous (Purple) */
+.context-pc { border-left: 5px solid #b388ff; }
+.context-pc b { color: #b388ff; font-weight: 700; text-shadow: 0 0 10px rgba(179, 136, 255, 0.2); }
+
+/* Present Perfect (Emerald/Green) */
+.context-pp { border-left: 5px solid #00c853; }
+.context-pp b { color: #00c853; font-weight: 700; text-shadow: 0 0 10px rgba(0, 200, 83, 0.2); }
+
+/* Present Perfect Continuous (Yellow/Gold) */
+.context-ppc { border-left: 5px solid #ffd600; }
+.context-ppc b { color: #ffd600; font-weight: 700; text-shadow: 0 0 10px rgba(255, 214, 0, 0.2); }
+
+
+
+/* Past Simple (Gold) */
+.context-ps-past { border-left: 5px solid #ffca28; }
+.context-ps-past b { color: #ffca28; font-weight: 700; text-shadow: 0 0 10px rgba(255, 202, 40, 0.2); }
+
+/* Past Continuous (Orange) */
+.context-pc-past { border-left: 5px solid #ff9800; }
+.context-pc-past b { color: #ff9800; font-weight: 700; text-shadow: 0 0 10px rgba(255, 152, 0, 0.2); }
+
+/* Past Perfect (Red) */
+.context-pp-past { border-left: 5px solid #f44336; }
+.context-pp-past b { color: #f44336; font-weight: 700; text-shadow: 0 0 10px rgba(244, 67, 54, 0.2); }
+
+/* Past Perfect Continuous (Dark Red) */
+.context-ppc-past { border-left: 5px solid #b71c1c; }
+.context-ppc-past b { color: #b71c1c; font-weight: 700; text-shadow: 0 0 10px rgba(183, 28, 28, 0.2); }
+
+/* Future Simple (Cyan) */
+.context-fs { border-left: 5px solid #00e5ff; }
+.context-fs b { color: #00e5ff; font-weight: 700; text-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
+
+/* Future Continuous (Light Blue) */
+.context-fc { border-left: 5px solid #00b0ff; }
+.context-fc b { color: #00b0ff; font-weight: 700; text-shadow: 0 0 10px rgba(0, 176, 255, 0.2); }
+
+/* Future Perfect (Lime) */
+.context-fp { border-left: 5px solid #76ff03; }
+.context-fp b { color: #76ff03; font-weight: 700; text-shadow: 0 0 10px rgba(118, 255, 3, 0.2); }
+
+/* Future Perfect Continuous (Pink) */
+.context-fpc { border-left: 5px solid #f50057; }
+.context-fpc b { color: #f50057; font-weight: 700; text-shadow: 0 0 10px rgba(245, 0, 87, 0.2); }
+
+/* Мобільна адаптація */
+@media (max-width: 768px) {
+    .context-reading-card { padding: 20px; font-size: 16px; }
+}
+
+/* --- VOCABULARY FOCUS BELOW TEXT --- */
+.vocabulary-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.vocabulary-section h4 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.vocab-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.vocab-item {
+    font-size: 15px;
+}
+
+.vocab-word {
+    font-weight: 700;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.vocab-desc {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}

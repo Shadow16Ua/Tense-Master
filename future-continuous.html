@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Continuous Tense: Rules & Examples | TenseMaster</title>
+    <meta name="description" content="Complete guide to the Future Continuous tense in English. Learn the grammar rules, sentence structures, marker words, and practice with our free test.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
+    <style>
+        :root { --primary-color: #ffffff; --glass-bg: rgba(255, 255, 255, 0.1); --glass-border: rgba(255, 255, 255, 0.2); --hover-color: rgba(255, 255, 255, 0.25); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #172b4d, #1a365d, #204066); background-size: cover; background-attachment: fixed; color: var(--primary-color); min-height: 100vh; display: flex; flex-direction: column; }
+
+        header { display: flex; justify-content: space-between; align-items: center; padding: 12px 50px; background: rgba(10, 15, 30, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; line-height: 1; }
+        .logo span { color: #00e5ff; }
+
+        .lang-dropdown { position: relative; display: inline-block; }
+        .lang-btn { background: var(--glass-bg); color: white; border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
+        .lang-btn:hover { background: var(--hover-color); }
+        .lang-content { display: none; position: absolute; right: 0; top: 100%; margin-top: 8px; background: rgba(20, 30, 60, 0.95); backdrop-filter: blur(15px); min-width: 160px; border-radius: 8px; border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 101; }
+        .lang-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
+        .lang-dropdown:hover .lang-content { display: block; animation: fadeIn 0.2s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .lang-content div { color: white; padding: 12px 16px; display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
+        .lang-content div:first-child { border-radius: 8px 8px 0 0; }
+        .lang-content div:last-child { border-radius: 0 0 8px 8px; }
+        .lang-content div:hover { background: rgba(255, 255, 255, 0.1); color: #00e5ff; }
+        .flag-icon { width: 20px; height: 15px; object-fit: cover; border-radius: 2px; }
+        .translatable { transition: opacity 0.3s ease-in-out; }
+
+        main { flex: 1; padding: 50px; position: relative; z-index: 10; max-width: 1100px; margin: 0 auto; width: 100%; }
+        .back-btn { display: inline-block; color: #00e5ff; text-decoration: none; font-size: 16px; margin-bottom: 30px; transition: transform 0.2s ease; }
+        .back-btn:hover { transform: translateX(-5px); }
+
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { font-size: 46px; margin-bottom: 15px; font-weight: 700; color: #fff; }
+        .hero p { font-size: 18px; opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+        /* Timeline: Future Continuous */
+        .timeline-container { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; margin-bottom: 30px; text-align: center; }
+        .timeline-container h3 { margin-bottom: 20px; color: #fff; font-weight: 400; font-size: 18px; }
+        .timeline { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 20px 0; }
+        .time-label { font-weight: bold; opacity: 0.7; }
+        .line { flex: 1; max-width: 500px; height: 4px; background: rgba(255,255,255,0.2); position: relative; border-radius: 2px; }
+        .dots { position: absolute; top: -14px; width: 100%; display: flex; justify-content: center; align-items: center; gap: 40px; color: #00e5ff; }
+        .now { background: rgba(255,255,255,0.2); color: #fff; font-size: 14px; padding: 4px 12px; border-radius: 12px; font-weight: bold; position: relative; z-index: 2; margin-right: 40px; }
+        .fc-action { display: flex; align-items: center; font-size: 20px; font-weight: bold; letter-spacing: 1px; }
+        .fc-interruption { color: #ffc107; font-size: 18px; margin: 0 -2px; position: relative; top: 1px; } /* Жовтий маркер точного часу */
+        .timeline-sub { font-size: 14px; opacity: 0.7; margin-top: 10px; }
+
+        .top-columns { display: flex; gap: 30px; margin-bottom: 30px; align-items: stretch; }
+        .col-left, .col-right { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+        .top-columns .rule-card { height: 100%; margin-bottom: 0; }
+        @media (max-width: 768px) { .top-columns { flex-direction: column; } }
+
+        .rule-card { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; }
+        .rule-card h2 { font-size: 24px; border-bottom: 2px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 25px; color: #00e5ff; }
+
+        .structure-box { margin-bottom: 20px; background: rgba(0, 0, 0, 0.2); border-radius: 12px; overflow: hidden; }
+        .structure-header { padding: 10px 15px; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+        .structure-header.positive { background: rgba(40, 167, 69, 0.2); border-left: 4px solid #28a745; }
+        .structure-header.negative { background: rgba(220, 53, 69, 0.2); border-left: 4px solid #dc3545; }
+        .structure-header.question { background: rgba(255, 193, 7, 0.2); border-left: 4px solid #ffc107; }
+        .structure-body { padding: 15px; font-size: 16px; line-height: 1.6; }
+        .structure-body span { color: #00e5ff; font-weight: bold; }
+
+        .example-box { margin-top: 15px; padding: 10px 15px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; font-size: 15px; border-left: 3px solid #00e5ff; }
+        .example-box p { margin-bottom: 5px; }
+        .example-box p:last-child { margin-bottom: 0; }
+
+        .exception-box { background: rgba(220, 53, 69, 0.15); border: 1px solid rgba(220, 53, 69, 0.4); border-radius: 12px; padding: 15px 20px; border-left: 4px solid #dc3545; }
+        .exception-box h4 { color: #ff4d4d; margin-bottom: 10px; font-size: 16px; }
+        .exception-box p { font-size: 14px; opacity: 0.9; margin-bottom: 10px; }
+        .exception-box em { color: #fff; display: block; background: rgba(0,0,0,0.2); padding: 6px 10px; border-radius: 6px; font-size: 14px; }
+        .exception-box em strong { color: #28a745; }
+        .exception-box em strike { color: #ff4d4d; opacity: 0.8; margin-right: 10px; }
+
+        .table-wrap { width: 100%; overflow-x: auto; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px; border: 1px solid var(--glass-border); text-align: left; }
+        th { background: rgba(0, 229, 255, 0.1); color: #00e5ff; }
+
+        .marker-words { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .marker { background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px; font-size: 14px; border: 1px solid var(--glass-border); }
+
+        .marker-rules { margin-top: 20px; margin-bottom: 0; background: rgba(0, 0, 0, 0.2); padding: 15px 20px; border-radius: 12px; border-left: 4px solid #ffc107; }
+        .marker-rules h4 { color: #ffc107; margin-bottom: 10px; font-size: 16px; }
+        .marker-rules ul { list-style: none; }
+        .marker-rules li { margin-bottom: 10px; font-size: 15px; }
+        .marker-rules li:last-child { margin-bottom: 0; }
+        .marker-rules em { color: #fff; display: block; margin-top: 4px; font-size: 14px; background: rgba(255, 255, 255, 0.05); padding: 6px 10px; border-radius: 6px; border-left: 2px solid #00e5ff; }
+        .marker-rules em strong { color: #00e5ff; }
+
+        .usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; margin-top: 30px; }
+        .usage-grid .usage-item { margin-bottom: 0; display: flex; flex-direction: column; }
+        .usage-grid .usage-item h3 { font-size: 18px; color: #fff; margin-bottom: 5px; }
+        .usage-grid .usage-item p { font-size: 15px; opacity: 0.8; margin-bottom: 15px; line-height: 1.5; }
+        .usage-grid .usage-item .example-box { margin-top: auto; }
+        @media (max-width: 768px) { .usage-grid { grid-template-columns: 1fr; } }
+
+        .quiz-section { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px; margin-bottom: 30px; }
+        .quiz-section h2 { font-size: 28px; margin-bottom: 10px; text-align: center; color: #00e5ff; }
+        .quiz-item { margin-bottom: 30px; padding-bottom: 25px; border-bottom: 1px solid var(--glass-border); }
+        .quiz-item p { font-size: 18px; margin-bottom: 15px; font-weight: 600; }
+        .options { display: flex; gap: 15px; flex-wrap: wrap; }
+        .custom-radio { cursor: pointer; position: relative; user-select: none; }
+        .custom-radio input[type="radio"] { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+        .radio-box { display: inline-block; padding: 12px 24px; background: rgba(255, 255, 255, 0.05); border: 2px solid var(--glass-border); border-radius: 12px; transition: all 0.3s ease; font-weight: 500; font-size: 16px; color: white; }
+        .custom-radio:hover .radio-box { background: rgba(255, 255, 255, 0.15); transform: translateY(-3px); border-color: rgba(0, 229, 255, 0.5); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .custom-radio input:checked ~ .radio-box { background: rgba(0, 229, 255, 0.15); border-color: #00e5ff; color: #00e5ff; transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+
+        .quiz-btn { background: #00e5ff; color: #000; border: none; padding: 14px 40px; font-size: 18px; font-weight: bold; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; display: block; margin: 0 auto; box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3); }
+        .quiz-btn:hover { background: #00b8cc; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 229, 255, 0.5); }
+        .quiz-result { text-align: center; margin-top: 25px; font-size: 20px; font-weight: bold; min-height: 30px; transition: all 0.3s ease; }
+        .result-success { color: #28a745; text-shadow: 0 0 10px rgba(40, 167, 69, 0.5); }
+        .result-error { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 77, 0.5); }
+
+        .page-navigation { display: flex; justify-content: flex-end; margin-top: 20px; }
+        .next-btn { background: rgba(255, 255, 255, 0.05); color: #00e5ff; text-decoration: none; padding: 14px 28px; border: 1px solid var(--glass-border); border-radius: 12px; font-size: 16px; font-weight: 600; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .next-btn:hover { background: #00e5ff; color: #000; transform: translateX(5px); box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3); }
+
+        footer { text-align: center; padding: 20px; margin-top: 20px; background: rgba(0, 0, 0, 0.2); font-size: 14px; opacity: 0.8; width: 100%; position: relative; z-index: 10; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Tense<span>Master</span></div>
+
+        <div style="display: flex; align-items: center;">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+        
+            <div class="lang-dropdown">
+                <div class="lang-btn" id="currentLang">
+                    <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English ▾
+                </div>
+                <div class="lang-content">
+                    <div onclick="changeLanguage('en', '<img src=\'https://flagcdn.com/w20/gb.png\' class=\'flag-icon\' alt=\'UK flag\'> English')">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English
+                    </div>
+                    <div onclick="changeLanguage('uk', '<img src=\'https://flagcdn.com/w20/ua.png\' class=\'flag-icon\' alt=\'UA flag\'> Українська')">
+                        <img src="https://flagcdn.com/w20/ua.png" class="flag-icon" alt="UA flag"> Українська
+                    </div>
+                    <div onclick="changeLanguage('pl', '<img src=\'https://flagcdn.com/w20/pl.png\' class=\'flag-icon\' alt=\'PL flag\'> Polski')">
+                        <img src="https://flagcdn.com/w20/pl.png" class="flag-icon" alt="PL flag"> Polski
+                    </div>
+                    <div onclick="changeLanguage('ru', '<span style=\'display:inline-block; width:20px;\'></span> Русский')">
+                        <span style="display:inline-block; width:20px;"></span> Русский
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </header>
+
+    <main>
+        <a href="index.html" class="back-btn translatable" data-key="backBtn">⟵ Back to Tenses</a>
+        
+        <div class="hero">
+            <h1 class="translatable" data-key="fcTitle">Future Continuous</h1>
+            <p class="translatable" data-key="fcDesc">The tense of future processes. Used for actions that will be in progress at a specific time in the future.</p>
+        </div>
+
+        <div class="timeline-container">
+            <h3 class="translatable" data-key="timelineTitle">How it looks on a timeline:</h3>
+            <div class="timeline">
+                <div class="time-label past">Past</div>
+                <div class="line">
+                    <div class="dots">
+                        <span class="now">Now</span>
+                        <span class="fc-action">〰〰<span class="fc-interruption">▼</span>〰〰</span>
+                    </div>
+                </div>
+                <div class="time-label future">Future</div>
+            </div>
+            <p class="timeline-sub translatable" data-key="timelineSub">An action will be in progress around a specific moment in the future.</p>
+        </div>
+
+        <div class="top-columns">
+            <div class="col-left">
+                <div class="rule-card">
+                    <h2 class="translatable" data-key="structureTitle">1. Structure</h2>
+                    
+                    <div class="structure-box">
+                        <div class="structure-header positive">
+                            <span class="icon">✓</span> <span class="translatable" data-key="affirmative">Affirmative</span>
+                        </div>
+                        <div class="structure-body">
+                            <p><strong>All Subjects</strong> + <span>will be</span> + V-<span>ing</span></p>
+                            <div class="example-box">
+                                <p>👉 <em class="translatable" data-key="ex1">I <strong>will be flying</strong> to Paris at 5 PM.</em></p>
+                                <p>👉 <em class="translatable" data-key="ex2">They <strong>will be working</strong> tomorrow.</em></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="structure-box">
+                        <div class="structure-header negative">
+                            <span class="icon">✗</span> <span class="translatable" data-key="negative">Negative</span>
+                        </div>
+                        <div class="structure-body">
+                            <p>Subject + <span>will not (won't) be</span> + V-<span>ing</span></p>
+                            <div class="example-box">
+                                <p>👉 <em class="translatable" data-key="ex3">She <strong>won't be reading</strong> this evening.</em></p>
+                                <p>👉 <em class="translatable" data-key="ex4">We <strong>won't be waiting</strong> for long.</em></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="structure-box">
+                        <div class="structure-header question">
+                            <span class="icon">?</span> <span class="translatable" data-key="question">Question</span>
+                        </div>
+                        <div class="structure-body">
+                            <p><span>Will</span> + Subject + <span>be</span> + V-<span>ing</span>?</p>
+                            <div class="example-box">
+                                <p>👉 <em class="translatable" data-key="ex5"><strong>Will</strong> you <strong>be using</strong> the car?</em></p>
+                                <p>👉 <em class="translatable" data-key="ex6"><strong>Will</strong> he <strong>be sleeping</strong> then?</em></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="structure-box" style="margin-top: 25px; background: rgba(0, 229, 255, 0.05); border-left: 4px solid #00e5ff;">
+                        <div class="structure-header" style="background: transparent; padding-bottom: 5px;">
+                            <span class="icon">💡</span> <span class="translatable" data-key="shortFormsTitle">Short Forms</span>
+                        </div>
+                        <div class="structure-body" style="padding-top: 5px; font-size: 15px;">
+                            <p><strong>I / you / he / she / they will</strong> ➔ 'll</p>
+                            <p><strong>will not</strong> ➔ won't</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-right">
+                <div class="rule-card">
+                    <h2 class="translatable" data-key="spellingTitle" style="margin-bottom: 10px;">2. Spelling Rules (-ing)</h2>
+                    <div class="table-wrap">
+                        <table>
+                            <tr>
+                                <th class="translatable" data-key="thRule">Rule</th>
+                                <th class="translatable" data-key="thExample">Example</th>
+                            </tr>
+                            <tr>
+                                <td class="translatable" data-key="spelling1">Most verbs: add <strong>-ing</strong></td>
+                                <td>work ➔ work<strong>ing</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="translatable" data-key="spelling2">Ends in <strong>-e</strong>: drop the 'e'</td>
+                                <td>mak<s>e</s> ➔ mak<strong>ing</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="translatable" data-key="spelling3">Ends in <strong>-ie</strong>: change to <strong>-y</strong></td>
+                                <td>l<s>ie</s> ➔ l<strong>ying</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="translatable" data-key="spelling4">Short vowel + consonant: <strong>double it</strong></td>
+                                <td>run ➔ ru<strong>nn</strong>ing</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h2 class="translatable" data-key="markersTitle" style="margin-top: 40px; margin-bottom: 10px;">3. Time Markers</h2>
+                    <div class="marker-words">
+                        <div class="marker">at 5 PM tomorrow</div>
+                        <div class="marker">this time next week</div>
+                        <div class="marker">all day tomorrow</div>
+                        <div class="marker">when you arrive</div>
+                    </div>
+
+                    <div class="marker-rules">
+                        <h4 class="translatable" data-key="markerPosTitle">Crucial 'When' Rule:</h4>
+                        <ul>
+                            <li>
+                                <span class="translatable" data-key="markerPos1"><strong>Process + specific moment</strong>:</span>
+                                <em class="translatable" data-key="markerEx1">I will be working <strong>at 8 PM</strong>.</em>
+                            </li>
+                            <li>
+                                <span class="translatable" data-key="markerPos2"><strong>When + Present Simple</strong> (Not 'will'!):</span>
+                                <em class="translatable" data-key="markerEx2">I will be sleeping <strong>when you arrive</strong>.</em>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> <div class="exception-box" style="margin-top: 0; margin-bottom: 30px;">
+            <h4 class="translatable" data-key="trapTitle">⚠️ State Verbs Trap</h4>
+            <p class="translatable" data-key="trapDesc">Verbs of feelings and thoughts (love, know, want) are NOT used with -ing. Use Future Simple instead!</p>
+            <em class="translatable" data-key="trapEx"><strike>I will be knowing the answer.</strike> ➔ <strong>I will know</strong> the answer.</em>
+        </div>
+
+        <div class="rule-card full-width" style="margin-bottom: 30px;">
+            <h2 class="translatable" data-key="usageTitle">4. Use Cases Explained</h2>
+            
+            <div class="usage-grid">
+                <div class="usage-item">
+                    <h3 class="translatable" data-key="use1Title">1. Action in Progress in the Future</h3>
+                    <p class="translatable" data-key="use1Desc">To say that you will be in the middle of doing something at a certain time.</p>
+                    <div class="example-box"><em class="translatable" data-key="use1Ex">This time tomorrow, I will be lying on the beach.</em></div>
+                </div>
+                
+                <div class="usage-item">
+                    <h3 class="translatable" data-key="use2Title">2. Expected or Routine Events</h3>
+                    <p class="translatable" data-key="use2Desc">Things that will happen as part of a normal routine or plan.</p>
+                    <div class="example-box"><em class="translatable" data-key="use2Ex">I will be seeing John at work tomorrow, so I can ask him.</em></div>
+                </div>
+
+                <div class="usage-item">
+                    <h3 class="translatable" data-key="use3Title">3. Polite Inquiries</h3>
+                    <p class="translatable" data-key="use3Desc">Asking about someone's plans politely, usually to ask for a favor.</p>
+                    <div class="example-box"><em class="translatable" data-key="use3Ex">Will you be using the car tomorrow morning? (I need it).</em></div>
+                </div>
+
+                <div class="usage-item">
+                    <h3 class="translatable" data-key="use4Title">4. Parallel Future Actions</h3>
+                    <p class="translatable" data-key="use4Desc">Two or more actions happening at the same time in the future.</p>
+                    <div class="example-box"><em class="translatable" data-key="use4Ex">Tonight, I will be cooking while he will be watching TV.</em></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="context-reading-card context-fc">
+            <h3 class="translatable" data-key="readingTitleFC">📖 Context Practice: Space Mission 2030</h3>
+            <div class="context-text">
+                This time next year, a team of astronauts <b>will be traveling</b> to the Moon. They <b>will be conducting</b> experiments in the new lunar station. While they are there, millions of people <b>will be watching</b> the live stream on Earth. The commander <b>will be leading</b> the team through the craters. They <b>will not be sleeping</b> much during the first week. <b>Will you be following</b> their journey? I <b>will be thinking</b> about the stars every night while they <b>will be working</b> in space.
+            </div>
+            <div class="vocabulary-section">
+                <h4 class="translatable" data-key="vocabTitle">Vocabulary Focus:</h4>
+                <div class="vocab-list">
+                    <div class="vocab-item"><span class="vocab-word">Lunar</span> – <span class="vocab-desc translatable" data-key="lunar">relating to the moon.</span></div>
+                    <div class="vocab-item"><span class="vocab-word">Conduct</span> – <span class="vocab-desc translatable" data-key="conduct">to organize and carry out an activity or task.</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h2 class="translatable" data-key="quizTitle">Mastery Test</h2>
+            <p style="text-align: center; margin-bottom: 30px; opacity: 0.8;" class="translatable" data-key="quizDesc">Let's check your knowledge without hints.</p>
+            
+            <div class="quiz-item">
+                <p class="translatable" data-key="q1Text">1. This time next week, we ___ (fly) to Paris.</p>
+                <div class="options">
+                    <label class="custom-radio"><input type="radio" name="q1" value="will fly"><span class="radio-box">will fly</span></label>
+                    <label class="custom-radio"><input type="radio" name="q1" value="will be flying"><span class="radio-box">will be flying</span></label>
+                    <label class="custom-radio"><input type="radio" name="q1" value="are flying"><span class="radio-box">are flying</span></label>
+                </div>
+            </div>
+
+            <div class="quiz-item">
+                <p class="translatable" data-key="q2Text">2. Please don't call at 8 PM. I ___ (have) dinner.</p>
+                <div class="options">
+                    <label class="custom-radio"><input type="radio" name="q2" value="will have"><span class="radio-box">will have</span></label>
+                    <label class="custom-radio"><input type="radio" name="q2" value="will having"><span class="radio-box">will having</span></label>
+                    <label class="custom-radio"><input type="radio" name="q2" value="will be having"><span class="radio-box">will be having</span></label>
+                </div>
+            </div>
+
+            <div class="quiz-item">
+                <p class="translatable" data-key="q3Text">3. Excuse me, ___ (you / use) the printer long?</p>
+                <div class="options">
+                    <label class="custom-radio"><input type="radio" name="q3" value="will you use"><span class="radio-box">will you use</span></label>
+                    <label class="custom-radio"><input type="radio" name="q3" value="will you be using"><span class="radio-box">will you be using</span></label>
+                    <label class="custom-radio"><input type="radio" name="q3" value="do you use"><span class="radio-box">do you use</span></label>
+                </div>
+            </div>
+
+            <div class="quiz-item">
+                <p class="translatable" data-key="q4Text">4. When you arrive, she ___ (wait) for you at the station.</p>
+                <div class="options">
+                    <label class="custom-radio"><input type="radio" name="q4" value="will wait"><span class="radio-box">will wait</span></label>
+                    <label class="custom-radio"><input type="radio" name="q4" value="will be waiting"><span class="radio-box">will be waiting</span></label>
+                    <label class="custom-radio"><input type="radio" name="q4" value="waits"><span class="radio-box">waits</span></label>
+                </div>
+            </div>
+
+            <div class="quiz-item">
+                <p class="translatable" data-key="q5Text">5. I promise I ___ (not / forget) your birthday this year.</p>
+                <div class="options">
+                    <label class="custom-radio"><input type="radio" name="q5" value="won't forget"><span class="radio-box">won't forget</span></label>
+                    <label class="custom-radio"><input type="radio" name="q5" value="won't be forgetting"><span class="radio-box">won't be forgetting</span></label>
+                    <label class="custom-radio"><input type="radio" name="q5" value="don't forget"><span class="radio-box">don't forget</span></label>
+                </div>
+            </div>
+
+            <button class="quiz-btn translatable" data-key="checkBtn" onclick="checkAnswers()">Check Answers</button>
+            <div id="quizResult" class="quiz-result"></div>
+        </div>
+
+        <div class="page-navigation">
+            <a href="future-perfect.html" class="next-btn translatable" data-key="nextBtn">Next: Future Perfect ➔</a>
+        </div>
+
+        <div class="related-topics-container">
+            <div class="related-topics-title translatable" data-key="relatedTopicsLabel">🔗 Related topics:</div>
+            
+            <div class="related-links-wrapper">
+                <a href="present-continuous.html" class="related-link">Present Continuous <span class="arrow">➔</span></a>
+                <a href="past-continuous.html" class="related-link">Past Continuous <span class="arrow">➔</span></a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 TenseMaster. <span class="translatable" data-key="footerText">All rights reserved.</span>
+    </footer>
+
+    <script src="future-continuous.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

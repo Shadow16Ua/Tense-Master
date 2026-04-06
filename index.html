@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TenseMaster | Master English Grammar & Tenses</title>
+    <meta name="description" content="Learn English grammar, tenses, and rules easily with TenseMaster. Interactive flashcards, clear examples, and tests for all levels.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="theme.css">
+    <style>
+        /* Стилі для банера Фінального Іспиту */
+        .exam-banner {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Жовтий акцент зверху банера */
+        .exam-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ffc107, transparent);
+        }
+
+        .exam-banner h2 {
+            color: #ffc107;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.2);
+        }
+
+        .exam-banner p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Базовий стан: кнопка завжди м'яко пульсує тінню */
+        .exam-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffc107, #ff9800);
+            color: #000;
+            text-decoration: none;
+            padding: 16px 40px;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 12px;
+            transition: transform 0.3s ease; /* Плавність тільки для зміни розміру */
+            animation: idle-pulse 2s infinite; /* Постійна пульсація тіні */
+        }
+
+        /* При наведенні: плавно стає більшою і пульсує інтенсивніше */
+        .exam-btn:hover {
+            transform: scale(1.05) translateY(-2px); /* Плавно підростає */
+            color: #000;
+            animation: hover-pulse 1.5s infinite; /* Змінюємо пульсацію на більш активну */
+        }
+
+        /* При кліку: різко вдавлюється всередину */
+        .exam-btn:active {
+            transform: scale(0.95); /* Ефект вдавлювання */
+            animation: none; /* Вимикаємо світіння при натисканні */
+            box-shadow: 0 2px 5px rgba(255, 193, 7, 0.5); /* Маленька різка тінь */
+            transition: transform 0.1s ease; /* Зменшується дуже швидко (ефект кліку) */
+        }
+
+        /* М'яка пульсація для спокійного стану (тільки тінь!) */
+        @keyframes idle-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
+
+        /* Більш широка і яскрава пульсація при наведенні курсору */
+        @keyframes hover-pulse {
+            0% { box-shadow: 0 5px 15px rgba(255, 193, 7, 0.6), 0 0 0 0 rgba(255, 193, 7, 0.6); }
+            70% { box-shadow: 0 5px 15px rgba(255, 193, 7, 0.6), 0 0 0 20px rgba(255, 193, 7, 0); }
+            100% { box-shadow: 0 5px 15px rgba(255, 193, 7, 0.6), 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
+
+        /* Блок Флеш-карток (Тренування) */
+        .flashcard-promo {
+            background: rgba(0, 229, 255, 0.05);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-left: 4px solid #00e5ff;
+            border-radius: 16px;
+            padding: 20px 30px;
+            margin-bottom: 40px; /* Відступ до сітки часів */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .flashcard-promo .promo-text h3 { 
+            color: #00e5ff; 
+            font-size: 20px; 
+            margin-bottom: 5px; 
+        }
+        .flashcard-promo .promo-text p { 
+            font-size: 15px; 
+            opacity: 0.9; 
+            margin: 0; 
+        }
+        .flash-btn {
+            background: rgba(0, 229, 255, 0.15);
+            color: #00e5ff;
+            border: 1px solid #00e5ff;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap; /* Щоб кнопка не ламалася на два рядки */
+        }
+        .flash-btn:hover {
+            background: #00e5ff;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.4);
+        }
+
+        /* Стиль для повідомлення про збереження */
+        .local-storage-notice {
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: -60px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tense-item {
+            position: relative; 
+        }
+
+        /* Акуратна і стильна галочка */
+        .progress-check {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 14px;
+            color: #2cb94d;
+            background: rgba(33, 173, 66, 0.40);
+            border: 1px solid rgba(40, 167, 69, 0.4);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            /* Анімація появи */
+            opacity: 0; 
+            transform: scale(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+        }
+
+        /* Клас, який JS додає, коли тест пройдено */
+        .progress-check.completed {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* --- КНОПКА GRAMMAR НА ГОЛОВНІЙ --- */
+        .grammar-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(0, 229, 255, 0.1);
+            color: #00e5ff !important;
+            border: 1px solid #00e5ff;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.2);
+            /* margin-top: 10px; */
+            margin-bottom: 20px;
+        }
+
+        .grammar-btn:hover {
+            background: #00e5ff;
+            color: #000 !important;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 229, 255, 0.4);
+        }
+
+        /* Адаптація під світлу тему */
+        [data-theme="light"] .grammar-btn {
+            color: #008b99 !important;
+            border-color: #008b99;
+            box-shadow: 0 4px 15px rgba(0, 139, 153, 0.2);
+        }
+
+        [data-theme="light"] .grammar-btn:hover {
+            background: #008b99;
+            color: #ffffff !important;
+            box-shadow: 0 6px 20px rgba(0, 139, 153, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Tense<span>Master</span></div>
+        
+        <div style="display: flex; align-items: center;">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+
+            <div class="lang-dropdown">
+                <div class="lang-btn" id="currentLang">
+                    <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English ▾
+                </div>
+                <div class="lang-content">
+                    <div onclick="changeLanguage('en', '<img src=\'https://flagcdn.com/w20/gb.png\' class=\'flag-icon\' alt=\'UK flag\'> English')">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English
+                    </div>
+                    <div onclick="changeLanguage('uk', '<img src=\'https://flagcdn.com/w20/ua.png\' class=\'flag-icon\' alt=\'UA flag\'> Українська')">
+                        <img src="https://flagcdn.com/w20/ua.png" class="flag-icon" alt="UA flag"> Українська
+                    </div>
+                    <div onclick="changeLanguage('pl', '<img src=\'https://flagcdn.com/w20/pl.png\' class=\'flag-icon\' alt=\'PL flag\'> Polski')">
+                        <img src="https://flagcdn.com/w20/pl.png" class="flag-icon" alt="PL flag"> Polski
+                    </div>
+                    <div onclick="changeLanguage('ru', '<span style=\'display:inline-block; width:20px;\'></span> Русский')">
+                        <span style="display:inline-block; width:20px;"></span> Русский
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- <div class="hero">
+            <h1 class="translatable" data-key="heroTitle">Master English Tenses</h1>
+            or practice. You don't just read — you train. Choose a tense below to start.</p>
+            
+        </div> -->
+        <div class="hero">
+            <h1 class="translatable" data-key="heroTitle">Чому варто вчити англійську з нами?</h1>
+            <p class="translatable" data-key="heroSub">
+                Ми пояснюємо граматику простою мовою та даємо вправи для практики. 
+                Ти не просто читаєш — ти тренуєшся. Обери час нижче, щоб почати.
+            </p>
+            <a href="grammar.html" class="grammar-btn translatable" data-key="btnGrammar">📚 Essential Grammar</a>
+        </div>
+        <div class="local-storage-notice translatable" data-key="saveNotice">
+            💾 Your progress is safely stored locally in your browser.
+        </div>
+
+        <div class="tenses-grid">
+            <div class="time-group">
+                <h2 class="translatable" data-key="presentTitle">Present Tenses</h2>
+                <a href="present-simple.html" class="tense-item">
+                    <div class="progress-check" id="check-present-simple">✔</div>
+                    <strong>Present Simple</strong>
+                    <span class="translatable" data-key="descSimple">Habits, facts, and routines</span>
+                </a>
+                <a href="present-continuous.html" class="tense-item">
+                    <div class="progress-check" id="check-present-continuous">✔</div>
+                    <strong>Present Continuous</strong>
+                    <span class="translatable" data-key="descContinuous">Actions happening right now</span>
+                </a>
+                <a href="present-perfect.html" class="tense-item">
+                    <div class="progress-check" id="check-present-perfect">✔</div>
+                    <strong>Present Perfect</strong>
+                    <span class="translatable" data-key="descPerfect">Past actions with present results</span>
+                </a>
+                <a href="present-perfect-continuous.html" class="tense-item">
+                    <div class="progress-check" id="check-present-perfect-continuous">✔</div>
+                    <strong>Present Perfect Cont.</strong>
+                    <span class="translatable" data-key="descPerfectCont">Duration of ongoing actions</span>
+                </a>
+            </div>
+
+            <div class="time-group">
+                <h2 class="translatable" data-key="pastTitle">Past Tenses</h2>
+                <a href="past-simple.html" class="tense-item">
+                    <div class="progress-check" id="check-past-simple">✔</div>
+                    <strong>Past Simple</strong>
+                    <span class="translatable" data-key="descPastSimple">Completed past actions</span>
+                </a>
+                <a href="past-continuous.html" class="tense-item">
+                    <div class="progress-check" id="check-past-continuous">✔</div>
+                    <strong>Past Continuous</strong>
+                    <span class="translatable" data-key="descPastCont">Actions in progress in the past</span>
+                </a>
+                <a href="past-perfect.html" class="tense-item">
+                    <div class="progress-check" id="check-past-perfect">✔</div>
+                    <strong>Past Perfect</strong>
+                    <span class="translatable" data-key="descPastPerfect">Actions before another past action</span>
+                </a>
+                <a href="past-perfect-continuous.html" class="tense-item">
+                    <div class="progress-check" id="check-past-perfect-continuous">✔</div>
+                    <strong>Past Perfect Cont.</strong>
+                    <span class="translatable" data-key="descPastPerfectCont">Duration before a past moment</span>
+                </a>
+            </div>
+
+            <div class="time-group">
+                <h2 class="translatable" data-key="futureTitle">Future Tenses</h2>
+                <a href="future-simple.html" class="tense-item">
+                    <div class="progress-check" id="check-future-simple">✔</div>
+                    <strong>Future Simple</strong>
+                    <span class="translatable" data-key="descFutureSimple">Decisions, predictions, promises</span>
+                </a>
+                <a href="future-continuous.html" class="tense-item">
+                    <div class="progress-check" id="check-future-continuous">✔</div>
+                    <strong>Future Continuous</strong>
+                    <span class="translatable" data-key="descFutureCont">Actions in progress in the future</span>
+                </a>
+                <a href="future-perfect.html" class="tense-item">
+                    <div class="progress-check" id="check-future-perfect">✔</div>
+                    <strong>Future Perfect</strong>
+                    <span class="translatable" data-key="descFuturePerfect">Completed actions before a future time</span>
+                </a>
+                <a href="future-perfect-continuous.html" class="tense-item">
+                    <div class="progress-check" id="check-future-perfect-continuous">✔</div>
+                    <strong>Future Perfect Cont.</strong>
+                    <span class="translatable" data-key="descFuturePerfectCont">Duration up to a future moment</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="exam-banner">
+            <h2 class="translatable" data-key="examBannerTitle">Learned everything? Test yourself!</h2>
+            <p class="translatable" data-key="examBannerDesc">Take the ultimate challenge. 24 questions covering all 12 English tenses. Prove you are a Grammar Master!</p>
+            <a href="final-exam.html" class="exam-btn translatable" data-key="examBannerBtn">Take Final Exam 🚀</a>
+        </div>
+
+        <div class="flashcard-promo" style="margin-top: 30px; margin-bottom: 0px;">
+            <div class="promo-text">
+                <h3 class="translatable" data-key="flashPromoTitle">Train your memory!</h3>
+                <p class="translatable" data-key="flashPromoDesc">Use 3D Flashcards for quick active recall practice.</p>
+            </div>
+            <a href="flashcards.html" class="flash-btn translatable" data-key="flashBtn">Practice Flashcards 🗂️</a>
+        </div>
+
+        <div class="benefits-section" style="margin-top: 30px;">
+            <h2 class="translatable" data-key="benefitsTitle">Why Learn English?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3 class="translatable" data-key="benefit1Title">Career Boost</h3>
+                    <p class="translatable" data-key="benefit1Desc">Unlock global job opportunities and increase your earning potential.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌍</div>
+                    <h3 class="translatable" data-key="benefit2Title">Travel Freely</h3>
+                    <p class="translatable" data-key="benefit2Desc">Feel confident and understood anywhere in the world.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎬</div>
+                    <h3 class="translatable" data-key="benefit3Title">Original Content</h3>
+                    <p class="translatable" data-key="benefit3Desc">Watch movies, read books, and understand memes without translation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="author-section">
+            <h2 class="translatable" data-key="authorTitle">About the Creator</h2>
+            <p class="translatable" data-key="authorDesc">Hi! I created this project because I believe learning grammar shouldn't be boring. TenseMaster is designed to help you understand English tenses intuitively, with modern design and interactive practice.</p>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 TenseMaster. <span class="translatable" data-key="footerText">All rights reserved.</span>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

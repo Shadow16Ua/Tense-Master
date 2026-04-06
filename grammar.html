@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential English Grammar Rules | TenseMaster</title>
+    <meta name="description" content="Master English articles, plural nouns, prepositions, modal verbs, passive voice, and conditionals with simple explanations and examples.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --hover-color: rgba(255, 255, 255, 0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: linear-gradient(135deg, #172b4d, #1a365d, #204066);
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--primary-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* --- ШАПКА ЯК НА ІНШИХ СТОРІНКАХ --- */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 12px 50px; /* Повернули правильні відступи */
+            background: rgba(10, 15, 30, 0.7); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border); 
+            position: sticky; top: 0; z-index: 1000; width: 100%;
+        }
+
+        .logo { font-size: 24px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; line-height: 1; color: var(--primary-color); }
+        .logo span { color: #00e5ff; }
+
+        /* --- ВИПАДАЮЧЕ МЕНЮ МОВ (ІДЕАЛЬНЕ З АНІМАЦІЄЮ) --- */
+        .lang-dropdown { position: relative; display: inline-block; }
+        
+        .lang-btn {
+            background: var(--glass-bg); color: var(--primary-color); border: 1px solid var(--glass-border);
+            padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px;
+            transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
+        }
+        .lang-btn:hover { background: var(--hover-color); }
+
+        .lang-content {
+            display: none; position: absolute; right: 0; top: 100%; margin-top: 8px;
+            background: rgba(20, 30, 60, 0.95); backdrop-filter: blur(15px); min-width: 160px;
+            border-radius: 8px; border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 1001;
+        }
+        
+        /* НЕВИДИМИЙ МІСТОК (щоб мишка не зривалася) */
+        .lang-content::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
+        
+        /* АНІМАЦІЯ ВИЇЗДУ */
+        .lang-dropdown:hover .lang-content { display: block; animation: fadeInLang 0.2s ease-in-out; }
+        @keyframes fadeInLang { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .lang-content div {
+            color: white; padding: 12px 16px; display: flex; align-items: center; gap: 8px;
+            font-size: 14px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease;
+        }
+        .lang-content div:first-child { border-radius: 8px 8px 0 0; }
+        .lang-content div:last-child { border-radius: 0 0 8px 8px; }
+        .lang-content div:hover { background: rgba(255, 255, 255, 0.1); color: #00e5ff; }
+        
+        .flag-icon { width: 20px; height: 15px; object-fit: cover; border-radius: 2px; }
+
+        /* --- ПІДТРИМКА СВІТЛОЇ ТЕМИ ДЛЯ МЕНЮ --- */
+        [data-theme="light"] .lang-content {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        [data-theme="light"] .lang-content div { color: #102a43; }
+        [data-theme="light"] .lang-content div:hover { background: rgba(0, 0, 0, 0.05); color: #008b99; }
+
+        .back-btn { 
+            display: inline-block; color: #00e5ff; text-decoration: none; font-size: 16px; 
+            margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.2s; font-weight: 600; width: 100%;
+        }
+        [data-theme="light"] .back-btn { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .back-btn:hover { transform: translateX(-5px); }
+
+        /* --- ЛЕЙАУТ --- */
+        .grammar-layout { display: flex; width: 100%; min-height: calc(100vh - 65px); align-items: stretch; }
+        .sidebar { width: 320px; min-width: 320px; display: flex; flex-direction: column; position: sticky; top: 65px; height: calc(100vh - 65px); padding: 30px 25px; border-right: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2); overflow-y: auto; }
+        [data-theme="light"] .sidebar { background: rgba(255, 255, 255, 0.4); }
+        .sidebar-category { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255, 255, 255, 0.5); margin-top: 15px; margin-bottom: 8px; padding-left: 10px; font-weight: 600; }
+        [data-theme="light"] .sidebar-category { color: rgba(16, 42, 67, 0.5); }
+        .topic-btn { background: transparent; color: var(--primary-color); border: 1px solid transparent; padding: 12px 15px; border-radius: 10px; text-align: left; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; margin-bottom: 5px; }
+        .topic-btn:hover { background: rgba(255, 255, 255, 0.1); transform: translateX(5px); }
+        [data-theme="light"] .topic-btn:hover { background: rgba(0, 0, 0, 0.05); }
+        .topic-btn.active { background: rgba(0, 229, 255, 0.15); color: #00e5ff !important; border-color: rgba(0, 229, 255, 0.3); font-weight: 600; transform: translateX(5px); }
+        [data-theme="light"] .topic-btn.active { background: #00e5ff; color: #102a43 !important; border-color: #00e5ff; }
+
+        .content-area { flex: 1; padding: 40px 60px; }
+        .content-wrapper { max-width: 1100px; margin: 0 auto; }
+        .topic-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .topic-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .topic-content h2 { font-size: 42px; margin-bottom: 10px; color: var(--primary-color); }
+        .topic-intro { font-size: 18px; opacity: 0.8; margin-bottom: 40px; color: var(--primary-color); }
+
+        .grammar-card { background: rgba(20, 30, 60, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 30px; margin-bottom: 30px; backdrop-filter: blur(10px); color: var(--primary-color); }
+        [data-theme="light"] .grammar-card { background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(0, 0, 0, 0.1); }
+        .grammar-card h3 { color: #00e5ff; margin-bottom: 15px; font-size: 22px; display: flex; align-items: center; gap: 10px; }
+        [data-theme="light"] .grammar-card h3 { color: #008b99; }
+        .grammar-card > p { margin-bottom: 20px; font-size: 16px; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .sub-card { background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        [data-theme="light"] .sub-card { background: rgba(0, 0, 0, 0.03); border-color: rgba(0, 0, 0, 0.05); }
+        .sub-card h4 { margin-bottom: 8px; color: var(--primary-color); font-size: 18px; }
+        .sub-card .words { margin-top: 12px; font-family: monospace; font-size: 16px; color: #00e5ff; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; }
+        [data-theme="light"] .sub-card .words { background: rgba(255,255,255,0.8); color: #008b99; }
+
+        .example-box { border-left: 4px solid #00e5ff; padding-left: 20px; margin-top: 20px; background: linear-gradient(90deg, rgba(0, 229, 255, 0.1) 0%, transparent 100%); padding: 20px; border-radius: 0 12px 12px 0; font-size: 16px; }
+        .example-box p { margin-bottom: 8px; font-style: italic; color: var(--primary-color); }
+        .example-box b { color: #00e5ff; }
+        [data-theme="light"] .example-box b { color: #008b99; }
+
+        .summary-box { background: rgba(0, 229, 255, 0.1); border: 1px dashed #00e5ff; border-radius: 16px; padding: 30px; text-align: center; color: var(--primary-color); }
+        .summary-box h3 { color: #00e5ff; margin-bottom: 20px; justify-content: center; font-size: 24px; }
+        .summary-item { font-size: 18px; margin-bottom: 12px; }
+        .summary-item b { display: inline-block; width: 120px; text-align: right; margin-right: 15px; color: #00e5ff; }
+        [data-theme="light"] .summary-item b { color: #008b99; }
+
+        @media (max-width: 900px) {
+            .grammar-layout { flex-direction: column; }
+            .sidebar { width: 100%; min-width: 100%; height: auto; position: relative; top: 0; border-right: none; border-bottom: 1px solid var(--glass-border); padding: 20px; }
+            .content-area { padding: 30px 20px; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+        .translatable {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Tense<span>Master</span></div>
+        <div style="display: flex; align-items: center;">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">☀️</button>
+            
+            <div class="lang-dropdown">
+                <div class="lang-btn" id="currentLang">
+                    <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English ▾
+                </div>
+                <div class="lang-content">
+                    <div onclick="changeLanguage('en', '<img src=\'https://flagcdn.com/w20/gb.png\' class=\'flag-icon\' alt=\'UK flag\'> English')">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK flag"> English
+                    </div>
+                    <div onclick="changeLanguage('uk', '<img src=\'https://flagcdn.com/w20/ua.png\' class=\'flag-icon\' alt=\'UA flag\'> Українська')">
+                        <img src="https://flagcdn.com/w20/ua.png" class="flag-icon" alt="UA flag"> Українська
+                    </div>
+                    <div onclick="changeLanguage('pl', '<img src=\'https://flagcdn.com/w20/pl.png\' class=\'flag-icon\' alt=\'PL flag\'> Polski')">
+                        <img src="https://flagcdn.com/w20/pl.png" class="flag-icon" alt="PL flag"> Polski
+                    </div>
+                    <div onclick="changeLanguage('ru', '<span style=\'display:inline-block; width:20px;\'></span> Русский')">
+                        <span style="display:inline-block; width:20px;"></span> Русский
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="grammar-layout">
+        <aside class="sidebar">
+            <a href="index.html" class="back-btn translatable" data-key="backHome">← Back to Home</a>
+
+            <div class="sidebar-category translatable" data-key="catNouns">Nouns & Words</div>
+            <button class="topic-btn active translatable" data-key="topicArticles" onclick="showTopic('articles', this)">Articles (a, an, the)</button>
+            <button class="topic-btn translatable" data-key="topicPlurals" onclick="showTopic('plurals', this)">Plural Nouns</button>
+            <button class="topic-btn translatable" data-key="topicPreps" onclick="showTopic('prepositions', this)">Prepositions (in, on, at)</button>
+
+            <div class="sidebar-category translatable" data-key="catVerbs">Verbs</div>
+            <button class="topic-btn translatable" data-key="topicModals" onclick="showTopic('modals', this)">Modal Verbs</button>
+            <button class="topic-btn translatable" data-key="topicPassive" onclick="showTopic('passive', this)">Passive Voice</button>
+
+            <div class="sidebar-category translatable" data-key="catStructure">Structure</div>
+            <button class="topic-btn translatable" data-key="topicCond" onclick="showTopic('conditionals', this)">Conditionals</button>
+        </aside>
+
+        <section class="content-area">
+            <div class="content-wrapper">
+                
+                <div id="articles" class="topic-content active">
+                    <h2 class="translatable" data-key="artTitle">Articles</h2>
+                    <p class="topic-intro translatable" data-key="artIntro">Master the use of A, AN, and THE in English.</p>
+                    
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="artCard1Title">🔸 1. A / AN (Indefinite Articles)</h3>
+                        <p class="translatable" data-key="artCard1Desc">👉 Used when we talk about something <b>general</b> or for the <b>first time</b>.</p>
+                        
+                        <div class="grid-2">
+                            <div class="sub-card">
+                                <h4>✔️ A</h4>
+                                <p style="font-size: 14px; opacity: 0.8;" class="translatable" data-key="artADesc">Used before words that start with a <b>consonant</b> sound.</p>
+                                <div class="words">a book, a car, a dog</div>
+                            </div>
+                            <div class="sub-card">
+                                <h4>✔️ AN</h4>
+                                <p style="font-size: 14px; opacity: 0.8;" class="translatable" data-key="artAnDesc">Used before words that start with a <b>vowel</b> sound.</p>
+                                <div class="words">an apple, an hour (silent 'h')</div>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle">📌 <b>Examples:</b></p>
+                            <p class="translatable" data-key="artEx1">I have <b>a</b> dog.</p>
+                            <p class="translatable" data-key="artEx2">She bought <b>an</b> umbrella.</p>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="artCard2Title">🔸 2. THE (Definite Article)</h3>
+                        <p class="translatable" data-key="artCard2Desc">👉 Used when something is <b>specific</b> or already known to the listener.</p>
+                        
+                        <div class="example-box" style="margin-bottom: 30px;">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle2">📌 <b>Examples:</b></p>
+                            <p class="translatable" data-key="artEx3">I saw a dog. <b>The</b> dog was big.</p>
+                            <p class="translatable" data-key="artEx4">Close <b>the</b> door.</p>
+                        </div>
+
+                        <h4 style="margin-bottom: 15px; font-size: 18px;" class="translatable" data-key="artWhenThe">🔸 When we also use THE:</h4>
+                        <div class="grid-2">
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="artUnique">✔️ Unique things</h4>
+                                <div class="words">the sun, the moon</div>
+                            </div>
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="artGeo">✔️ Geography</h4>
+                                <div class="words">the USA, the Alps</div>
+                            </div>
+                            <div class="sub-card" style="grid-column: span 2;">
+                                <h4 class="translatable" data-key="artSuper">✔️ Superlatives</h4>
+                                <div class="words">the best, the biggest</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="artCard3Title">🔸 3. No Article (Zero Article)</h3>
+                        <p class="translatable" data-key="artCard3Desc">👉 Used when speaking in general about plural nouns or uncountable things.</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle3">📌 <b>Examples:</b></p>
+                            <p class="translatable" data-key="artEx5">I like music.</p>
+                            <p class="translatable" data-key="artEx6">Dogs are friendly.</p>
+                            <p class="translatable" data-key="artEx7">She goes to school.</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-box">
+                        <h3 class="translatable" data-key="artSumTitle">🔥 Quick Summary</h3>
+                        <div class="summary-item translatable" data-key="artSum1"><b>a / an</b> → something general</div>
+                        <div class="summary-item translatable" data-key="artSum2"><b>the</b> → something specific</div>
+                        <div class="summary-item translatable" data-key="artSum3"><b>no article</b> → general ideas or plural/uncountable nouns</div>
+                    </div>
+                </div>
+
+                <div id="plurals" class="topic-content">
+                    <h2 class="translatable" data-key="plTitle">Plural Nouns</h2>
+                    <p class="topic-intro translatable" data-key="plIntro">Plural nouns are used when we talk about more than one thing.</p>
+                    
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="plR1Title">🔸 1. Regular Plurals (add -s)</h3>
+                        <p class="translatable" data-key="plR1Desc">👉 Most nouns just add <b>-s</b>.</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 12px; font-style: normal;" class="translatable" data-key="exTitle">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; font-size: 16px; line-height: 1.8;">
+                                book → <b>books</b><br>
+                                car → <b>cars</b><br>
+                                dog → <b>dogs</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="plR2Title">🔸 2. Nouns ending in -s, -sh, -ch, -x, -z</h3>
+                        <p class="translatable" data-key="plR2Desc">👉 Add <b>-es</b> to make pronunciation easier.</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 12px; font-style: normal;" class="translatable" data-key="exTitle2">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; font-size: 16px; line-height: 1.8;">
+                                bus → <b>buses</b><br>
+                                box → <b>boxes</b><br>
+                                watch → <b>watches</b><br>
+                                dish → <b>dishes</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="plR3Title">🔸 3. Nouns ending in -y</h3>
+                        
+                        <div class="grid-2" style="margin-top: 15px;">
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="plR3C1">✔️ Consonant + Y</h4>
+                                <p style="font-size: 14px; opacity: 0.8;" class="translatable" data-key="plR3C1Desc">Change -y to <b>-ies</b>.</p>
+                                <div class="words" style="margin-top: 15px; line-height: 1.8;">
+                                    baby → <b>babies</b><br>
+                                    city → <b>cities</b>
+                                </div>
+                            </div>
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="plR3C2">✔️ Vowel + Y</h4>
+                                <p style="font-size: 14px; opacity: 0.8;" class="translatable" data-key="plR3C2Desc">Just add <b>-s</b>.</p>
+                                <div class="words" style="margin-top: 15px; line-height: 1.8;">
+                                    boy → <b>boys</b><br>
+                                    toy → <b>toys</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="plR4Title">🔸 4. Nouns ending in -f / -fe</h3>
+                        <p class="translatable" data-key="plR4Desc">👉 Often change to <b>-ves</b>.</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 12px; font-style: normal;" class="translatable" data-key="exTitle3">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; font-size: 16px; line-height: 1.8;">
+                                leaf → <b>leaves</b><br>
+                                wife → <b>wives</b><br>
+                                knife → <b>knives</b>
+                            </div>
+                        </div>
+                        
+                        <div class="exception-box" style="margin-top: 20px;">
+                            <h4 class="translatable" data-key="plR4Exc">⚠️ Exceptions:</h4>
+                            <div class="words" style="background: transparent; padding: 0; font-size: 16px; line-height: 1.8; color: #ff4d4d;">
+                                roof → <b>roofs</b><br>
+                                chief → <b>chiefs</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="plR5Title">🔸 5. Irregular Plurals (must memorize)</h3>
+                        <p class="translatable" data-key="plR5Desc">👉 These don’t follow rules.</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 12px; font-style: normal;" class="translatable" data-key="exTitle4">📌 <b>Examples:</b></p>
+                            
+                            <div class="grid-2" style="margin-bottom: 0;">
+                                <div class="words" style="background: transparent; padding: 0; font-size: 16px; line-height: 1.8;">
+                                    man → <b>men</b><br>
+                                    woman → <b>women</b><br>
+                                    child → <b>children</b>
+                                </div>
+                                <div class="words" style="background: transparent; padding: 0; font-size: 16px; line-height: 1.8;">
+                                    tooth → <b>teeth</b><br>
+                                    foot → <b>feet</b><br>
+                                    mouse → <b>mice</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="plR6Title">🔸 6. Same in singular & plural</h3>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 12px; font-style: normal;" class="translatable" data-key="exTitle5">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; font-size: 16px; line-height: 1.8;">
+                                sheep → <b>sheep</b><br>
+                                fish → <b>fish</b><br>
+                                deer → <b>deer</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="summary-box">
+                        <h3 class="translatable" data-key="plSumTitle">🔥 Quick Summary</h3>
+                        <div class="summary-item translatable" data-key="plSum1"><b>add -s</b> → most words</div>
+                        <div class="summary-item translatable" data-key="plSum2"><b>add -es</b> → after s, sh, ch, x, z</div>
+                        <div class="summary-item translatable" data-key="plSum3"><b>-y</b> → -ies (if consonant before)</div>
+                        <div class="summary-item translatable" data-key="plSum4"><b>-f</b> → -ves (sometimes)</div>
+                        <div class="summary-item translatable" data-key="plSum5"><b>irregular</b> → learn by heart</div>
+                    </div>
+                </div>
+                
+                <div id="prepositions" class="topic-content">
+                    <h2 class="translatable" data-key="prepTitle">Prepositions: in, on, at</h2>
+                    <p class="topic-intro translatable" data-key="prepIntro">These prepositions are used for time and place, and they can be confusing — but there’s a simple logic 👇</p>
+                    
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="prepR1Title">🔸 1. IN</h3>
+                        <p class="translatable" data-key="prepR1Desc">👉 Used for <b>longer periods</b> of time and <b>inside</b> spaces.</p>
+                        
+                        <div class="grid-2" style="margin-top: 15px;">
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="prepTime">⏰ Time:</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    in the morning<br>
+                                    in 2025<br>
+                                    in July<br>
+                                    in winter
+                                </div>
+                            </div>
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="prepPlaceIn">📍 Place (inside something):</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    in a room<br>
+                                    in a car<br>
+                                    in a city
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="prepInEx1">I was born <b>in</b> 2008.</span><br>
+                                <span class="translatable" data-key="prepInEx2">She is <b>in</b> the room.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="prepR2Title">🔸 2. ON</h3>
+                        <p class="translatable" data-key="prepR2Desc">👉 Used for <b>days / dates</b> and <b>surfaces</b>.</p>
+                        
+                        <div class="grid-2" style="margin-top: 15px;">
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="prepTime">⏰ Time:</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    on Monday<br>
+                                    on my birthday<br>
+                                    on July 5th
+                                </div>
+                            </div>
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="prepPlaceOn">📍 Place (on a surface):</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    on the table<br>
+                                    on the wall<br>
+                                    on the floor
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle2">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="prepOnEx1">I have a test <b>on</b> Monday.</span><br>
+                                <span class="translatable" data-key="prepOnEx2">The phone is <b>on</b> the table.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="prepR3Title">🔸 3. AT</h3>
+                        <p class="translatable" data-key="prepR3Desc">👉 Used for <b>exact times</b> and <b>specific places</b>.</p>
+                        
+                        <div class="grid-2" style="margin-top: 15px;">
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="prepTime">⏰ Time:</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    at 5 PM<br>
+                                    at noon<br>
+                                    at midnight
+                                </div>
+                            </div>
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="prepPlaceAt">📍 Place (point/location):</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    at school<br>
+                                    at home<br>
+                                    at the bus stop
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exception-box">
+                            <h4 class="translatable" data-key="prepMistakesTitle">⚠️ Common Mistakes:</h4>
+                            <div class="words" style="background: transparent; padding: 0; font-size: 16px; line-height: 2; color: #fff;">
+                                <strike style="color:#ff4d4d; margin-right: 15px;">in Monday</strike> → <b style="color:#28a745; margin-left: 10px;">on Monday</b><br>
+                                <strike style="color:#ff4d4d; margin-right: 15px;">at July</strike> → <b style="color:#28a745; margin-left: 10px;">in July</b><br>
+                                <strike style="color:#ff4d4d; margin-right: 15px;">on 5 PM</strike> → <b style="color:#28a745; margin-left: 10px;">at 5 PM</b>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle3">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="prepAtEx1">I wake up <b>at</b> 7 AM.</span><br>
+                                <span class="translatable" data-key="prepAtEx2">She is <b>at</b> the station.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="prepCompTitle">🔥 Quick Comparison</h3>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="translatable" data-key="prepTh1">Preposition</th>
+                                        <th class="translatable" data-key="prepTh2">Time</th>
+                                        <th class="translatable" data-key="prepTh3">Place</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b style="color: #00e5ff;">in</b></td>
+                                        <td class="translatable" data-key="prepTd1">months, years</td>
+                                        <td class="translatable" data-key="prepTd2">inside something</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b style="color: #00e5ff;">on</b></td>
+                                        <td class="translatable" data-key="prepTd3">days, dates</td>
+                                        <td class="translatable" data-key="prepTd4">on a surface</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b style="color: #00e5ff;">at</b></td>
+                                        <td class="translatable" data-key="prepTd5">exact time</td>
+                                        <td class="translatable" data-key="prepTd6">specific point</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div id="modals" class="topic-content">
+                    <h2 class="translatable" data-key="modTitle">Modal Verbs</h2>
+                    <p class="topic-intro translatable" data-key="modIntro">Modal verbs are special verbs used to express ability, possibility, permission, obligation, advice, etc.</p>
+                    
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="modCommonTitle">🔸 Common Modal Verbs</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                            <span class="words" style="padding: 5px 15px; border-radius: 20px;">can</span>
+                            <span class="words" style="padding: 5px 15px; border-radius: 20px;">could</span>
+                            <span class="words" style="padding: 5px 15px; border-radius: 20px;">may</span>
+                            <span class="words" style="padding: 5px 15px; border-radius: 20px;">might</span>
+                            <span class="words" style="padding: 5px 15px; border-radius: 20px;">must</span>
+                            <span class="words" style="padding: 5px 15px; border-radius: 20px;">have to</span>
+                            <span class="words" style="padding: 5px 15px; border-radius: 20px;">should</span>
+                            <span class="words" style="padding: 5px 15px; border-radius: 20px;">will / would</span>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="modR1Title">🔸 1. CAN / COULD</h3>
+                        <p class="translatable" data-key="modR1Desc">👉 Ability / possibility / permission</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="modR1Ex1">I <b>can</b> swim. (ability)</span><br>
+                                <span class="translatable" data-key="modR1Ex2"><b>Can</b> I go out? (permission)</span><br>
+                                <span class="translatable" data-key="modR1Ex3">It <b>could</b> rain. (possibility)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="modR2Title">🔸 2. MAY / MIGHT</h3>
+                        <p class="translatable" data-key="modR2Desc">👉 Possibility (more formal / less certain)</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle2">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="modR2Ex1">It <b>may</b> rain.</span><br>
+                                <span class="translatable" data-key="modR2Ex2">She <b>might</b> come later.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="modR3Title">🔸 3. MUST / HAVE TO</h3>
+                        <p class="translatable" data-key="modR3Desc">👉 Obligation / necessity</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle3">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="modR3Ex1">You <b>must</b> study. (strong / personal)</span><br>
+                                <span class="translatable" data-key="modR3Ex2">I <b>have to</b> wake up early. (rule / situation)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="modR4Title">🔸 4. SHOULD</h3>
+                        <p class="translatable" data-key="modR4Desc">👉 Advice / recommendation</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle4">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="modR4Ex1">You <b>should</b> sleep more.</span><br>
+                                <span class="translatable" data-key="modR4Ex2">He <b>should</b> apologize.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="modR5Title">🔸 5. WILL / WOULD</h3>
+                        <p class="translatable" data-key="modR5Desc">👉 Future / polite requests / conditionals</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle5">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="modR5Ex1">I <b>will</b> call you.</span><br>
+                                <span class="translatable" data-key="modR5Ex2"><b>Would</b> you help me?</span><br>
+                                <span class="translatable" data-key="modR5Ex3">I <b>would</b> go if I had time.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card" style="border: 1px solid rgba(255, 193, 7, 0.4); box-shadow: 0 5px 25px rgba(255, 193, 7, 0.15);">
+                        <h3 class="translatable" data-key="modRulesTitle" style="color: #ffc107; font-size: 24px; margin-bottom: 20px;">🔥 Important Rules</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            
+                            <div class="sub-card" style="border-left: 4px solid #00e5ff; padding: 15px 20px;">
+                                <div class="translatable" data-key="modRule1" style="margin-bottom: 12px; font-size: 16px; color: var(--primary-color);">✔️ <b>1. No “to” after modal verbs</b></div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; font-family: monospace; font-size: 15px; background: rgba(0,0,0,0.2); padding: 10px 15px; border-radius: 8px;">
+                                    <b style="color:#28a745;">✅ I can swim</b> 
+                                    <strike style="color:#ff4d4d; opacity: 0.8;">❌ I can to swim</strike>
+                                </div>
+                            </div>
+
+                            <div class="sub-card" style="border-left: 4px solid #00e5ff; padding: 15px 20px;">
+                                <div class="translatable" data-key="modRule2" style="margin-bottom: 12px; font-size: 16px; color: var(--primary-color);">✔️ <b>2. Base form of verb</b></div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; font-family: monospace; font-size: 15px; background: rgba(0,0,0,0.2); padding: 10px 15px; border-radius: 8px;">
+                                    <b style="color:#28a745;">✅ She can go</b> 
+                                    <strike style="color:#ff4d4d; opacity: 0.8;">❌ She can goes</strike>
+                                </div>
+                            </div>
+
+                            <div class="sub-card" style="border-left: 4px solid #00e5ff; padding: 15px 20px;">
+                                <div class="translatable" data-key="modRule3" style="margin-bottom: 12px; font-size: 16px; color: var(--primary-color);">✔️ <b>3. No -s in 3rd person</b></div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; font-family: monospace; font-size: 15px; background: rgba(0,0,0,0.2); padding: 10px 15px; border-radius: 8px;">
+                                    <b style="color:#28a745;">✅ He can swim</b> 
+                                    <strike style="color:#ff4d4d; opacity: 0.8;">❌ He cans swim</strike>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="summary-box" style="margin-top: 30px; display: flex; flex-direction: column; align-items: center;">
+                        <h3 class="translatable" data-key="modSumTitle">🔥 Quick Summary</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start; text-align: left; width: fit-content;">
+                            <div class="summary-item translatable" data-key="modSum1" style="margin: 0;"><b style="width: 150px;">can</b> → ability</div>
+                            <div class="summary-item translatable" data-key="modSum2" style="margin: 0;"><b style="width: 150px;">could/might/may</b> → possibility</div>
+                            <div class="summary-item translatable" data-key="modSum3" style="margin: 0;"><b style="width: 150px;">must / have to</b> → obligation</div>
+                            <div class="summary-item translatable" data-key="modSum4" style="margin: 0;"><b style="width: 150px;">should</b> → advice</div>
+                            <div class="summary-item translatable" data-key="modSum5" style="margin: 0;"><b style="width: 150px;">will / would</b> → future / polite</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="passive" class="topic-content">
+                    <h2 class="translatable" data-key="pasTitle">Passive Voice</h2>
+                    <p class="topic-intro translatable" data-key="pasIntro">The passive voice is used when the action is more important than the person who does it, or the doer is unknown.</p>
+                    
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="pasR1Title">🔸 Structure</h3>
+                        <p class="translatable" data-key="pasR1Desc">👉 <b>be</b> (in correct tense) + <b>past participle (V3)</b></p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="pasR1Ex1">Active: She writes a letter</span><br>
+                                <span class="translatable" data-key="pasR1Ex2">Passive: A letter <b>is written</b> (by her)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="pasR2Title">🔸 When to use Passive Voice</h3>
+                        
+                        <div class="grid-2" style="margin-top: 15px;">
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="pasUse1">✔️ 1. Doer is unknown</h4>
+                                <div class="words translatable" data-key="pasUse1Ex" style="background: transparent; padding: 0;">My phone <b>was stolen</b></div>
+                            </div>
+                            <div class="sub-card">
+                                <h4 class="translatable" data-key="pasUse2">✔️ 2. Doer is not important</h4>
+                                <div class="words translatable" data-key="pasUse2Ex" style="background: transparent; padding: 0;">The road <b>is being repaired</b></div>
+                            </div>
+                            <div class="sub-card" style="grid-column: span 2;">
+                                <h4 class="translatable" data-key="pasUse3">✔️ 3. Formal / scientific style</h4>
+                                <div class="words translatable" data-key="pasUse3Ex" style="background: transparent; padding: 0;">The experiment <b>was conducted</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="pasR3Title">🔸 Passive in Different Tenses</h3>
+                        
+                        <div class="grid-2" style="margin-top: 15px;">
+                            <div class="sub-card">
+                                <h4>Present Simple</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    <span class="translatable" data-key="pasT1A" style="color: rgba(255,255,255,0.7);">Active: They make cars</span><br>
+                                    <span class="translatable" data-key="pasT1P" style="color: #00e5ff;">Passive: Cars <b>are made</b></span>
+                                </div>
+                            </div>
+                            <div class="sub-card">
+                                <h4>Past Simple</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    <span class="translatable" data-key="pasT2A" style="color: rgba(255,255,255,0.7);">Active: They built a house</span><br>
+                                    <span class="translatable" data-key="pasT2P" style="color: #00e5ff;">Passive: A house <b>was built</b></span>
+                                </div>
+                            </div>
+                            <div class="sub-card">
+                                <h4>Future Simple</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    <span class="translatable" data-key="pasT3A" style="color: rgba(255,255,255,0.7);">Active: They will finish the work</span><br>
+                                    <span class="translatable" data-key="pasT3P" style="color: #00e5ff;">Passive: The work <b>will be finished</b></span>
+                                </div>
+                            </div>
+                            <div class="sub-card">
+                                <h4>Present Continuous</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    <span class="translatable" data-key="pasT4A" style="color: rgba(255,255,255,0.7);">Active: They are building a bridge</span><br>
+                                    <span class="translatable" data-key="pasT4P" style="color: #00e5ff;">Passive: A bridge <b>is being built</b></span>
+                                </div>
+                            </div>
+                            <div class="sub-card" style="grid-column: span 2;">
+                                <h4>Present Perfect</h4>
+                                <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                    <span class="translatable" data-key="pasT5A" style="color: rgba(255,255,255,0.7);">Active: They have cleaned the room</span><br>
+                                    <span class="translatable" data-key="pasT5P" style="color: #00e5ff;">Passive: The room <b>has been cleaned</b></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="pasR4Title">🔸 By + Doer</h3>
+                        <p class="translatable" data-key="pasR4Desc">👉 Use <b>by</b> if we want to say who did the action.</p>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle2">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="pasR4Ex1">The book was written <b>by him</b></span><br>
+                                <span class="translatable" data-key="pasR4Ex2">The song was sung <b>by her</b></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(20, 30, 60, 0.2) 100%); border-left: 5px solid #ffc107; border-radius: 16px; padding: 30px; margin-top: 30px; position: relative; overflow: hidden; border-top: 1px solid rgba(255, 193, 7, 0.15); border-right: 1px solid rgba(255, 193, 7, 0.05); border-bottom: 1px solid rgba(255, 193, 7, 0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                        <div style="position: absolute; top: -30px; right: -20px; font-size: 150px; opacity: 0.03; pointer-events: none; transform: rotate(15deg);">🔥</div>
+                        
+                        <h3 class="translatable" data-key="pasRulesTitle" style="color: #ffc107; font-size: 24px; margin-bottom: 25px; position: relative; z-index: 2;">🔥 Important Rules</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 15px; position: relative; z-index: 2;">
+                            
+                            <div style="background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 18px 25px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                <div class="translatable" data-key="pasRule1" style="margin-bottom: 12px; font-size: 16px; color: var(--primary-color);">✔️ <b>1. Object becomes subject</b></div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; font-family: monospace; font-size: 15px; background: rgba(0,0,0,0.4); padding: 12px 18px; border-radius: 8px;">
+                                    <span class="translatable" data-key="pasRule1Ex" style="color:#00e5ff;">Active: She eats an apple → Passive: An apple is eaten</span> 
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 18px 25px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                <div class="translatable" data-key="pasRule2" style="margin-bottom: 12px; font-size: 16px; color: var(--primary-color);">✔️ <b>2. Use V3 (past participle)</b></div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; font-family: monospace; font-size: 15px; background: rgba(0,0,0,0.4); padding: 12px 18px; border-radius: 8px; color: #fff;">
+                                    write → <b style="color:#28a745;">written</b> &nbsp;&nbsp;|&nbsp;&nbsp; eat → <b style="color:#28a745;">eaten</b>
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 18px 25px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                <div class="translatable" data-key="pasRule3" style="margin-bottom: 5px; font-size: 16px; color: var(--primary-color);">✔️ <b>3. Not always needed</b></div>
+                                <div class="translatable" data-key="pasRule3Desc" style="font-size: 14px; color: rgba(255,255,255,0.7);">👉 Sometimes passive sounds unnatural in casual speech.</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="summary-box" style="margin-top: 30px; display: flex; flex-direction: column; align-items: center;">
+                        <h3 class="translatable" data-key="pasSumTitle">🔥 Quick Summary</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start; text-align: left; width: fit-content;">
+                            <div class="summary-item translatable" data-key="pasSum1" style="margin: 0;"><b style="width: 190px; white-space: nowrap; display: inline-block;">Passive = be + V3</b> → Focus on action, not the doer</div>
+                            <div class="summary-item translatable" data-key="pasSum2" style="margin: 0;"><b style="width: 190px; white-space: nowrap; display: inline-block;">Usage</b> → Often used in formal English / when doer is unknown</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="conditionals" class="topic-content">
+                    <h2 class="translatable" data-key="condTitle">Conditionals</h2>
+                    <p class="topic-intro translatable" data-key="condIntro">Conditionals are sentences used to talk about situations and their results.</p>
+                    
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="cond0Title">🔸 0 Conditional (Zero)</h3>
+                        <p class="translatable" data-key="cond0Desc" style="margin-bottom: 15px;">👉 Used for facts and general truths.</p>
+                        
+                        <div style="background: rgba(0, 229, 255, 0.1); border-left: 3px solid #00e5ff; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; font-family: monospace; font-size: 15px;">
+                            <span class="translatable" data-key="cond0Struct">🧩 <b>If + present simple → present simple</b></span>
+                        </div>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="cond0Ex1">If you heat water, it boils.</span><br>
+                                <span class="translatable" data-key="cond0Ex2">If I eat too much, I feel sick.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="cond1Title">🔸 1st Conditional</h3>
+                        <p class="translatable" data-key="cond1Desc" style="margin-bottom: 15px;">👉 Used for real and possible future situations.</p>
+                        
+                        <div style="background: rgba(0, 229, 255, 0.1); border-left: 3px solid #00e5ff; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; font-family: monospace; font-size: 15px;">
+                            <span class="translatable" data-key="cond1Struct">🧩 <b>If + present simple → will + verb</b></span>
+                        </div>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle2">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="cond1Ex1">If it rains, I will stay home.</span><br>
+                                <span class="translatable" data-key="cond1Ex2">If you study, you will pass.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="cond2Title">🔸 2nd Conditional</h3>
+                        <p class="translatable" data-key="cond2Desc" style="margin-bottom: 15px;">👉 Used for unreal / imaginary situations (present or future).</p>
+                        
+                        <div style="background: rgba(0, 229, 255, 0.1); border-left: 3px solid #00e5ff; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; font-family: monospace; font-size: 15px;">
+                            <span class="translatable" data-key="cond2Struct">🧩 <b>If + past simple → would + verb</b></span>
+                        </div>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle3">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="cond2Ex1">If I had money, I would travel.</span><br>
+                                <span class="translatable" data-key="cond2Ex2">If I were you, I would study more.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card">
+                        <h3 class="translatable" data-key="cond3Title">🔸 3rd Conditional</h3>
+                        <p class="translatable" data-key="cond3Desc" style="margin-bottom: 15px;">👉 Used for past situations that didn’t happen (regret).</p>
+                        
+                        <div style="background: rgba(0, 229, 255, 0.1); border-left: 3px solid #00e5ff; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; font-family: monospace; font-size: 15px;">
+                            <span class="translatable" data-key="cond3Struct">🧩 <b>If + past perfect → would have + V3</b></span>
+                        </div>
+                        
+                        <div class="example-box">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle4">📌 <b>Examples:</b></p>
+                            <div class="words" style="background: transparent; padding: 0; line-height: 1.8;">
+                                <span class="translatable" data-key="cond3Ex1">If I had studied, I would have passed.</span><br>
+                                <span class="translatable" data-key="cond3Ex2">If she had left earlier, she would have arrived on time.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grammar-card" style="border: 1px dashed rgba(255,255,255,0.3); background: rgba(0,0,0,0.15);">
+                        <h3 class="translatable" data-key="condMixTitle" style="color: #b388ff;">🔥 Mixed Conditionals (optional, B2+)</h3>
+                        <p class="translatable" data-key="condMixDesc">👉 Mix past and present.</p>
+                        
+                        <div class="example-box" style="border-left-color: #b388ff; background: linear-gradient(90deg, rgba(179, 136, 255, 0.1) 0%, transparent 100%);">
+                            <p style="margin-bottom: 8px; font-style: normal;" class="translatable" data-key="exTitle5">📌 <b>Example:</b></p>
+                            <div class="words translatable" data-key="condMixEx" style="background: transparent; padding: 0; line-height: 1.8;">
+                                If I had studied, I would have a better job now.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(20, 30, 60, 0.2) 100%); border-left: 5px solid #ffc107; border-radius: 16px; padding: 30px; margin-top: 30px; position: relative; overflow: hidden; border-top: 1px solid rgba(255, 193, 7, 0.15); border-right: 1px solid rgba(255, 193, 7, 0.05); border-bottom: 1px solid rgba(255, 193, 7, 0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                        <div style="position: absolute; top: -30px; right: -20px; font-size: 150px; opacity: 0.03; pointer-events: none; transform: rotate(15deg);">🔥</div>
+                        
+                        <h3 class="translatable" data-key="condRulesTitle" style="color: #ffc107; font-size: 24px; margin-bottom: 25px; position: relative; z-index: 2;">🔥 Important Rules</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 15px; position: relative; z-index: 2;">
+                            
+                            <div style="background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 18px 25px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                <div class="translatable" data-key="condRule1" style="margin-bottom: 12px; font-size: 16px; color: var(--primary-color);">✔️ <b>1. Comma rule</b></div>
+                                <div style="display: flex; flex-direction: column; gap: 8px; font-family: monospace; font-size: 15px; background: rgba(0,0,0,0.4); padding: 12px 18px; border-radius: 8px;">
+                                    <span class="translatable" data-key="condRule1A" style="color:#00e5ff;"><b>If</b> it rains<b>,</b> I will stay home.</span> 
+                                    <span class="translatable" data-key="condRule1B" style="color:#fff;">I will stay home <b>if</b> it rains. (no comma)</span> 
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 18px 25px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                <div class="translatable" data-key="condRule2" style="margin-bottom: 12px; font-size: 16px; color: var(--primary-color);">✔️ <b>2. “Were” instead of “was”</b></div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; font-family: monospace; font-size: 15px; background: rgba(0,0,0,0.4); padding: 12px 18px; border-radius: 8px;">
+                                    <b style="color:#28a745;" class="translatable" data-key="condRule2Ex">✅ If I were you (correct)</b>
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 18px 25px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                <div class="translatable" data-key="condRule3" style="margin-bottom: 12px; font-size: 16px; color: var(--primary-color);">✔️ <b>3. Don’t use “will” after IF</b></div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; font-family: monospace; font-size: 15px; background: rgba(0,0,0,0.4); padding: 12px 18px; border-radius: 8px;">
+                                    <b style="color:#28a745;">✅ If it rains</b> 
+                                    <strike style="color:#ff4d4d; opacity: 0.8;">❌ If it will rain</strike>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="summary-box" style="margin-top: 30px; display: flex; flex-direction: column; align-items: center;">
+                        <h3 class="translatable" data-key="condSumTitle">🔥 Quick Summary</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start; text-align: left; width: fit-content;">
+                            <div class="summary-item translatable" data-key="condSum0" style="margin: 0;"><b style="width: 50px; display: inline-block;">0</b> → facts</div>
+                            <div class="summary-item translatable" data-key="condSum1" style="margin: 0;"><b style="width: 50px; display: inline-block;">1st</b> → real future</div>
+                            <div class="summary-item translatable" data-key="condSum2" style="margin: 0;"><b style="width: 50px; display: inline-block;">2nd</b> → unreal now</div>
+                            <div class="summary-item translatable" data-key="condSum3" style="margin: 0;"><b style="width: 50px; display: inline-block;">3rd</b> → unreal past</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="theme.js"></script>
+    <script src="grammar.js"></script>
+</body>
+</html>
